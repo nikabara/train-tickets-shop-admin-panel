@@ -19,11 +19,13 @@ export class FirebaseService {
 
   addInfo(title: string, descr: string, occured: Timestamp, renewalAt: Timestamp, imageUrl: string): Observable<string> {
     const infoToAdd: any = {
-      title: title,
-      description: descr,
-      occured: occured,
-      estimatedRenewal: renewalAt,
-      imageUrl: imageUrl
+      info: {
+        title: title,
+        description: descr,
+        occured: occured,
+        estimatedRenewal: renewalAt,
+        imageUrl: imageUrl
+      }
     }
 
     const promise = addDoc(this.infoCollection, infoToAdd).then(

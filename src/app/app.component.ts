@@ -15,7 +15,7 @@ import { Timestamp } from '@angular/fire/firestore';
 export class AppComponent {
 
   constructor(private firebaseService: FirebaseService) { }
-  
+
   addInfo(): void {
     this.firebaseService.addInfo(
       "Testing info",
