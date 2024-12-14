@@ -1,23 +1,44 @@
 <section class="log-in-section">
 
-    <div class="log-in-left">
-        <h2>Admin</h2>
+    <div class="log-in-section-inner">
+        <div class="log-in-left">
+            <h4 class="log-in-type">Admin</h4>
+    
+            <form [formGroup]="loginFormGroup" (ngSubmit)="onSubbmit()">
+                <div class="form-titles">
+                    <h1 class="log-in-title">Log In to Admin</h1>
+                    <p class="log-in-subtitle">Please enter your details to log in</p>
+                </div>
+    
+                <div class="email-input-wrapper input-wrappers">
+                    <label class="input-labels">Email 
+                        <span *ngIf="loginFormGroup.controls['email'].invalid && loginFormGroup.controls['email'].touched"><i class="bi bi-dot"></i> <span style="color: #d17373;">email is invalid</span></span>
+                    </label>
+                    <input formControlName="email" class="email-input" type="text" placeholder="admin@example.com">
+                </div>
+    
+                <div class="password-input-wrapper input-wrappers">
+                    <label class="input-labels">Password
+                        <span *ngIf="loginFormGroup.controls['password'].invalid && loginFormGroup.controls['password'].touched"><i class="bi bi-dot"></i> <span style="color: #d17373;">password is invalid</span></span>
+                    </label>
+                    <input formControlName="password" class="password-input" [type]="isEyeVisible ? 'text' : 'password'" placeholder="admin/.">
 
-        <form action="">
-            <h1>Log in to admin</h1>
-            <p>Please enter your details</p>
-
-            <div class="email-input-wrapper">
-                <p>Email</p>
-                <input type="text" placeholder="admin@example.com">
-            </div>
-
-            <div class="email-input-wrapper">
-                <p>Password</p>
-                <input type="text" placeholder="admin/.">
-            </div>
-        </form>
-
-        <h6>© copyright 2024</h6>
+                    <i (click)="toggleEyeVisibility()" class="bi bi-eye" [class.eyeVisible]="isEyeVisible"></i>
+                    <i (click)="toggleEyeVisibility()" class="bi bi-eye-slash" [class.eyeVisible]="!isEyeVisible"></i>
+                </div>
+    
+                <button type="submit" id="log-in-button">Log In</button>
+            </form>
+    
+            <h6 class="log-in-copyright">© copyright 2024</h6>
+        </div>
+    
+        <div class="log-in-right">
+            <video class="train-go-video" autoplay loop muted playsinline>
+                <source src="/videos/train-go-animation.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+              <!-- <img src="/images/loginPic.png" alt=""> -->
+        </div>
     </div>
 </section>
