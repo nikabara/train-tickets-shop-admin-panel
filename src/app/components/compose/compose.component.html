@@ -1,0 +1,51 @@
+<section class="compose-wrapper">
+    <form [formGroup]="composeFormGroup" (ngSubmit)="onFormSubmit()" class="compose">
+        <h1 class="page-title">Compose news</h1>
+
+        <div class="option">
+            <p class="option-type">Subject
+                <span style="color: #d17373; margin-left: -4px; font-size: 14px;" *ngIf="composeFormGroup.controls['title'].invalid && composeFormGroup.controls['title'].touched">
+                    <i class="bi bi-dot"></i> 
+                    <span>title is invalid</span>
+                </span>                
+            </p>
+            <input formControlName="title" class="subject" type="text" placeholder="Topic title">
+        </div>
+
+        <div class="option">
+            <p class="option-type">Description
+                <span style="color: #d17373; margin-left: -4px; font-size: 14px;" *ngIf="composeFormGroup.controls['description'].invalid && composeFormGroup.controls['description'].touched">
+                    <i class="bi bi-dot"></i> 
+                    <span>description is invalid</span>
+                </span>
+            </p>
+            <textarea formControlName="description" placeholder="Topic description" class="description" name="" id="" cols="30" rows="10"></textarea>
+        </div>
+        
+        <div class="option">
+            <p class="option-type">Image URL
+                <span style="color: #d17373; margin-left: -4px; font-size: 14px;" *ngIf="composeFormGroup.controls['imageUrl'].invalid && composeFormGroup.controls['imageUrl'].touched">
+                    <i class="bi bi-dot"></i> 
+                    <span>image URL is invalid</span>
+                </span>
+            </p>
+            <input formControlName="imageUrl" type="text" class="image-url" placeholder="Image URL link">
+        </div>
+
+        <div class="option">
+            <p class="option-type">Renewal date
+                <span style="color: #d17373; margin-left: -4px; font-size: 14px;" *ngIf="composeFormGroup.controls['estimatedRenewal'].invalid && composeFormGroup.controls['estimatedRenewal'].touched">
+                    <i class="bi bi-dot"></i> 
+                    <span>estimated renewal is invalid</span>
+                </span>
+            </p>
+
+            <input formControlName="estimatedRenewal" type="date">
+        </div>
+
+        <div class="action-buttons">
+            <button type="submit" class="action-button post-button" id="post_news_button">Post</button>
+            <button (click)="composeFormGroup.reset()" class="action-button cancel-button" id="cancel_news_button">Cancel</button>    
+        </div>
+    </form>
+</section>

@@ -29,21 +29,36 @@ export class FirebaseService {
     }) as Observable<AdminUser[]>;
   }
 
-  addInfo(title: string, descr: string, occured: Timestamp, renewalAt: Timestamp, imageUrl: string): Observable<string> {
-    const infoToAdd: any = {
-      info: {
-        title: title,
-        description: descr,
-        occured: occured,
-        estimatedRenewal: renewalAt,
-        imageUrl: imageUrl
-      }
-    }
+  // addInfo(title: string, descr: string, occured: Timestamp, renewalAt: Timestamp, imageUrl: string): Observable<string> {
+  //   const infoToAdd: any = {
+  //     info: {
+  //       title: title,
+  //       description: descr,
+  //       occured: occured,
+  //       estimatedRenewal: renewalAt,
+  //       imageUrl: imageUrl
+  //     }
+  //   }
 
+  //   const promise = addDoc(this.infoCollection, infoToAdd).then(
+  //     (response) => response.id
+  //   );
+
+  //   return from(promise);
+  // }
+
+  addInfo(formData: any): Observable<string> {
+    const infoToAdd: any = {
+      info: formData // Directly pass the raw form data
+    };
+  
+    console.log(infoToAdd, 'info to add');
+  
     const promise = addDoc(this.infoCollection, infoToAdd).then(
       (response) => response.id
     );
-
+  
     return from(promise);
   }
+  
 }

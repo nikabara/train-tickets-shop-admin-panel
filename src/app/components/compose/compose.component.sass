@@ -1,0 +1,69 @@
+.compose-wrapper
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .compose
+        background-color: #fff
+        width: 98%
+        height: 95%
+        border-radius: 8px
+        margin-left: auto
+        margin-right: 15px
+        padding: 5px 10px 10px 15px
+        display: flex
+        flex-direction: column
+        gap: 15px
+
+        .page-title
+            font-size: 25px
+
+        .option
+            textarea
+                resize: none
+                width: 600px !important
+
+            input, textarea
+                width: 400px
+                border: solid #edeff0 2px
+                border-radius: 8px
+                color: #92959c
+                padding: 6px 6px 6px 10px
+                outline: none
+                font-size: 14px
+                margin-top: 5px
+
+            .option-type
+                color: #3a3fd5
+                font-weight: 600
+
+        .action-buttons
+            margin-top: auto
+            width: 300px
+            display: flex
+            gap: 5px
+            align-items: center
+            justify-content: center
+
+            .action-button
+                width: 50%
+                padding: 10px
+                border: none
+                border-radius: 8px
+                color: white
+                cursor: grab
+                margin-top: 15px
+
+            .post-button
+                background-color: #7f56da
+
+                &:hover
+                    background-color: #5f27d8
+
+            .cancel-button
+                background-color: #969999
+
+                &:hover
+                    background-color: #e80000

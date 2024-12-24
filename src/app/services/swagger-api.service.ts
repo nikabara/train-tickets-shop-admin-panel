@@ -17,6 +17,6 @@ export class SwaggerApiService {
   confirmTicket(ticketId: string) : Observable<any> {
     return this.http.get<any>(`${this.apiURL}/tickets/confirm/${ticketId}`);
   }
-   
+  
   
 }

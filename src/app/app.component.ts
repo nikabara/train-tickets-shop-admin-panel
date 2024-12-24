@@ -18,20 +18,20 @@ export class AppComponent {
 
   constructor(private firebaseService: FirebaseService) { }
 
-  addInfo(): void {
-    this.firebaseService.addInfo(
-      "Testing info",
-      "This is testing info subbmit function from admin panel",
-      Timestamp.now(),
-      Timestamp.now(),
-      "https://cdn.create.vista.com/api/media/small/136287766/stock-photo-blue-ridge-parkway-summer-appalachian-mountains-sunset"
-    ).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    )
-  }
+  // addInfo(): void {
+  //   this.firebaseService.addInfo(
+  //     "Testing info",
+  //     "This is testing info subbmit function from admin panel",
+  //     Timestamp.now(),
+  //     Timestamp.now(),
+  //     "https://cdn.create.vista.com/api/media/small/136287766/stock-photo-blue-ridge-parkway-summer-appalachian-mountains-sunset"
+  //   ).subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   )
+  // }
 }
