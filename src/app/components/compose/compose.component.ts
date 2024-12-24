@@ -28,11 +28,11 @@ export class ComposeComponent implements OnInit {
 
   onFormSubmit(): void {
     if (this.composeFormGroup.valid) {
-      const dateString: string = this.composeFormGroup.get('estimatedRenewal')?.value;
+      // const dateString: string = this.composeFormGroup.get('estimatedRenewal')?.value;
 
-      // Convert the date string to a timestamp and update the form value
-      const timestamp = new Date(dateString).getTime();
-      this.composeFormGroup.patchValue({ estimatedRenewal: timestamp });
+      // // Convert the date string to a timestamp and update the form value
+      // const timestamp = new Date(dateString).getTime();
+      // this.composeFormGroup.patchValue({ estimatedRenewal: timestamp });
 
       // Extract raw form data
       const formData = this.composeFormGroup.value;

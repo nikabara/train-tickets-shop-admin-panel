@@ -1,1 +1,72 @@
-<h1>Ticket validate works!</h1>
+<section class="validate-ticket-wrapper">
+    <div class="validate-ticket">
+        <h1>Validate ticket id</h1>
+
+        <div class="input-wrapper">
+            <input class="ticket-id" type="text" placeholder="Fill ticket-id in here" [(ngModel)]="ticketId">
+            <button id="validate_ticket_button" (click)="validateTicket()"><i class="bi bi-search"></i></button>
+        </div>
+
+        <div *ngIf="ticketInfo.length !== 0">
+            <h1 style="color: green;">Ticket found</h1>
+        </div>
+
+        <div *ngIf="ticketInfo.length === 0">
+            <h1 style="color: red;">Error finding ticket, check Id consisting of 32 letters and 4 '-' characters</h1>
+        </div>
+
+        <div *ngIf="ticketInfo.length !== 0" class="ticket-info">
+            <div class="row-1">
+                <h4>Travel info</h4>
+                <article>
+                    <p class="ticket-id">Ticket id : {{ ticketInfo.id }}</p>
+                    <p class="issue-date">Issue date : {{ ticketInfo.date }}</p>
+                </article>
+            </div>
+
+            <div class="row-2">
+                <div class="column-1">
+                    <p>Departure : {{ ticketInfo.train.from }} {{ ticketInfo.train.departure }}-ზე</p>
+                </div>
+                <div class="column-2">
+                    <p>Arrival : {{ ticketInfo.train.to }} {{ ticketInfo.train.arrive }}-ზე</p>
+                </div>
+                <div class="column-3">
+                    <p>Departure date : {{ ticketInfo.date }}</p>
+                </div>
+            </div>
+
+            <div class="row-3">
+                <h4>Contact info</h4>
+                <article>
+                    <p class="email">Email : {{ ticketInfo.email }}</p>
+                    <p class="phone-number">Phone number : {{ ticketInfo.phone }}</p>
+                </article>
+            </div>
+
+            <div class="row-4">
+                <h4>Passengers</h4>
+                <article>
+                    <div class="passenger" *ngFor="let person of ticketInfo.persons">
+                        <div class="column-1">
+                            <p class="passenger-name">Name : {{ person.name }}</p>
+                        </div>
+
+                        <div class="column-2">
+                            <p class="passenger-last-name">Surname : {{ person.surname }}</p>
+                        </div>
+
+                        <div class="column-3">
+                            <p class="passenger-private-id">Id number : {{ person.id }}</p>
+                        </div>
+
+                        <div class="column-4">
+                            <p class="passenger-private-id">Set number : {{ person.seat.number }}</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </div>
+</section>

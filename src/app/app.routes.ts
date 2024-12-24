@@ -3,6 +3,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ComposeComponent } from './components/compose/compose.component';
 import { ValidateTicketComponent } from './components/validate-ticket/validate-ticket.component';
+import { ValidateQrComponent } from './components/validate-qr/validate-qr.component';
 
 export const routes: Routes = [
     { path: '', component: LogInComponent },
@@ -10,5 +11,6 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, title: 'Dashboard' },
     { path: 'compose', component: ComposeComponent, title: 'Compose' },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket' },
+    { path: 'validate-qr', component: ValidateQrComponent, title: 'Validate QR' },
     { path: '**', component: DashboardComponent }
 ];
