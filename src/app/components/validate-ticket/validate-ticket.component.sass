@@ -8,7 +8,7 @@
     .validate-ticket
         background-color: #fff
         width: 98%
-        height: 95%
+        height: 95vh
         border-radius: 8px
         margin-left: auto
         margin-right: 15px
@@ -17,11 +17,7 @@
         flex-direction: column
         gap: 15px
         overflow: auto
-
-        .ticket-info
-            .row-4
-                height: 250px
-                overflow: auto
+       
 
         .input-wrapper
             max-width: 680px
@@ -51,3 +47,278 @@
 
                 &:hover
                     background-color: #5751f8
+
+        .ticket-info
+            width: 800px
+            display: flex
+            flex-direction: column
+            background-color: #fbfbfb
+            gap: 25px
+            padding: 20px
+
+            .row-1
+                display: flex
+                flex-direction: column
+
+                article
+                    margin-top: 15px
+                    justify-content: space-between
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+
+            .row-2
+                display: grid
+                grid-template-columns: repeat(3, 1fr)
+                overflow: hidden
+                border-radius: 8px
+                border: solid black 1px
+
+                .column-1, .column-2, .column-3
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    padding: 5px
+
+                .column-2
+                    border-left: solid black 1px
+                    border-right: solid black 1px
+
+
+            .row-3
+                display: flex
+                flex-direction: column
+
+                article
+                    border: solid black 1px
+                    border-radius: 8px
+                    margin-top: 15px
+                    justify-content: space-between
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+                    padding: 10px 0
+
+                    .email, .phone-number
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        height: 100%
+
+                    .email
+                        border-right: solid black 2px
+
+            .row-4
+                display: flex
+                flex-direction: column
+
+                article
+                    margin-top: 15px
+                    display: flex
+                    flex-direction: column
+                    gap: 10px
+
+                    .passenger
+                        width: 100%
+                        display: grid
+                        grid-template-columns: repeat(4, 1fr)
+                        border: solid black 1px
+                        border-radius: 8px                    
+        
+
+                        .column-1, .column-2, .column-3, .column-4
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            padding: 10px 0
+
+            .row-5
+                border-top: solid black 2px
+                padding-top: 15px
+
+            .row-6
+                text-align: center
+
+        .row-7
+            margin-top: 20px
+            width: 800px
+            display: flex
+            gap: 10px
+
+            .action-buttons
+                flex-grow: 1
+                padding: 10px 0
+                border: none
+                border-radius: 8px
+                font-weight: 600
+
+            #download_ticket_invoice
+                background-color: #6f6af8
+                color: white
+
+                &:hover
+                    background-color: #5751f8
+
+            #delete_ticket
+                background-color: #e83b3b
+                color: white
+
+                &:hover
+                    background-color: #c92c2c
+
+    .validate-ticket
+        background-color: #fff
+        width: 98%
+        height: 95vh
+        border-radius: 8px
+        margin-left: auto
+        margin-right: 15px
+        padding: 5px 10px 10px 15px
+        display: flex
+        flex-direction: column
+        gap: 15px
+        overflow: auto
+
+        .input-wrapper
+            max-width: 680px
+            display: flex
+            align-items: center
+            justify-content: flex-start
+            gap: 5px
+
+            input
+                width: 560px
+                border: solid #edeff0 2px
+                border-radius: 8px
+                color: #e83b3b
+                padding: 6px 6px 6px 10px
+                outline: none
+                font-size: 22px
+
+            #validate_ticket_button
+                height: 100%
+                width: 55px
+                border-radius: 8px
+                font-size: 18px
+                color: #ffffff
+                border: none
+                background-color: #6f6af8
+                cursor: pointer
+
+                &:hover
+                    background-color: #5751f8
+
+        .ticket-info
+            width: 800px
+            display: flex
+            flex-direction: column
+            background-color: #fbfbfb
+            gap: 25px
+            padding: 20px
+
+            .row-1
+                display: flex
+                flex-direction: column
+
+                article
+                    margin-top: 15px
+                    justify-content: space-between
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+
+            .row-2
+                display: grid
+                grid-template-columns: repeat(3, 1fr)
+                overflow: hidden
+                border-radius: 8px
+                border: solid black 1px
+
+                .column-1, .column-2, .column-3
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    padding: 5px
+
+                .column-2
+                    border-left: solid black 1px
+                    border-right: solid black 1px
+
+            .row-3
+                display: flex
+                flex-direction: column
+
+                article
+                    border: solid black 1px
+                    border-radius: 8px
+                    margin-top: 15px
+                    justify-content: space-between
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+                    padding: 10px 0
+
+                    .email, .phone-number
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        height: 100%
+
+                    .email
+                        border-right: solid black 2px
+
+            .row-4
+                display: flex
+                flex-direction: column
+
+                article
+                    margin-top: 15px
+                    display: flex
+                    flex-direction: column
+                    gap: 10px
+
+                    .passenger
+                        width: 100%
+                        display: grid
+                        grid-template-columns: repeat(4, 1fr)
+                        border: solid black 1px
+                        border-radius: 8px
+
+                        .column-1, .column-2, .column-3, .column-4
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            padding: 10px 0
+
+            .row-5
+                border-top: solid black 2px
+                padding-top: 15px
+
+            .row-6
+                text-align: center
+
+        .row-7
+            margin-top: 20px
+            width: 800px
+            display: flex
+            gap: 10px
+
+            .action-buttons
+                flex-grow: 1
+                padding: 10px 0
+                border: none
+                border-radius: 8px
+                font-weight: 600
+                cursor: pointer
+
+            #download_ticket_invoice
+                background-color: #6f6af8
+                color: white
+
+                &:hover
+                    background-color: #5751f8
+
+            #delete_ticket
+                background-color: #e83b3b
+                color: white
+
+                &:hover
+                    background-color: #c92c2c
+
+

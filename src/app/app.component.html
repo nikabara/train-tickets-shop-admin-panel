@@ -1,5 +1,5 @@
-<main>
-    <app-sidebar></app-sidebar>
+<main [ngClass]="{ 'differed-main': isLoginRoute }">
+    <app-sidebar [ngClass]="{ 'hidden-sidebar': isLoginRoute }"></app-sidebar>
     <div class="router-outlet-wrapper">
         <router-outlet></router-outlet>
     </div>
