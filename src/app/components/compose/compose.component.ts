@@ -15,7 +15,7 @@ export class ComposeComponent implements OnInit {
   private firestore: Firestore = inject(Firestore)
 
   composeFormGroup!: FormGroup;
-  
+
   ngOnInit(): void {
     this.composeFormGroup = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -23,29 +23,31 @@ export class ComposeComponent implements OnInit {
       imageUrl: new FormControl('', [Validators.required, Validators.minLength(5)]),
       estimatedRenewal: new FormControl(''),
       occured: new FormControl(Timestamp.now()),
-    })  
+    })
   }
 
   onFormSubmit(): void {
-    const dateString: string = this.composeFormGroup.get('estimatedRenewal')?.value;
-  
-    // Convert the date string to a timestamp and update the form value
-    const timestamp = new Date(dateString).getTime();
-    this.composeFormGroup.patchValue({ estimatedRenewal: timestamp });
-  
-    // Extract raw form data
-    const formData = this.composeFormGroup.value;
-  
-    // Call the Firebase service with raw data
-    this.firebaseService.addInfo(formData).subscribe(
-      (response) => {
-        console.log('Document ID:', response);
-      },
-      (error) => {
-        console.error('Error adding document:', error);
-      }
-    );
+    if (this.composeFormGroup.valid) {
+      const dateString: string = this.composeFormGroup.get('estimatedRenewal')?.value;
 
-    this.composeFormGroup.reset();
+      // Convert the date string to a timestamp and update the form value
+      const timestamp = new Date(dateString).getTime();
+      this.composeFormGroup.patchValue({ estimatedRenewal: timestamp });
+
+      // Extract raw form data
+      const formData = this.composeFormGroup.value;
+
+      // Call the Firebase service with raw data
+      this.firebaseService.addInfo(formData).subscribe(
+        (response) => {
+          console.log('Document ID:', response);
+        },
+        (error) => {
+          console.error('Error adding document:', error);
+        }
+      );
+
+      this.composeFormGroup.reset();
+    }
   }
 }
