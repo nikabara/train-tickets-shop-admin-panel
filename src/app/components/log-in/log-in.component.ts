@@ -5,6 +5,8 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 import { AdminUser } from '../../interfaces/AminUser.interface';
 import { Timestamp } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { RateLimiterService } from '../../services/rate-limiter.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-log-in',
@@ -13,8 +15,9 @@ import { Router } from '@angular/router';
   styleUrl: './log-in.component.sass'
 })
 export class LogInComponent implements OnInit {
-  firebaseService: FirebaseService = inject(FirebaseService);
-  router: Router = inject(Router);
+  private firebaseService: FirebaseService = inject(FirebaseService);
+  private rateLimiter: RateLimiterService = inject(RateLimiterService);
+  private router: Router = inject(Router);
 
   isEyeVisible: boolean = false;
 
@@ -55,7 +58,7 @@ export class LogInComponent implements OnInit {
   }
 
   onSubbmit(): void {
-    if (this.loginFormGroup.valid && typeof sessionStorage !== 'undefined' && this.isAdminUserFound()) {
+    if (this.loginFormGroup.valid && typeof sessionStorage !== 'undefined' && this.isAdminUserFound() && this.rateLimiter.canAttempt()) {
       sessionStorage.setItem('isAuthed', this.isAdminUserFound().toString());
       this.getUserRole(this.loginFormGroup.value.email, this.loginFormGroup.value.password);
       sessionStorage.setItem('userType', `${this.userRole}`);
@@ -63,6 +66,17 @@ export class LogInComponent implements OnInit {
       this.router.navigate(['/dashboard'])
     } else {
       console.log('Form is invalid');
+    }
+
+    if (!this.rateLimiter.canAttempt()) {
+      Swal.fire({
+        icon: 'error',
+        title: "Too many Log-in attempts. Try again in 1 minute."
+      })
+    }
+
+    if (this.loginFormGroup.valid) {
+      this.rateLimiter.recordAttempt();
     }
   }
 

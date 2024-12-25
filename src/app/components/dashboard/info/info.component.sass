@@ -1,0 +1,77 @@
+.main-section
+  min-height: 150px
+  height: 450px
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: 1.25fr 4fr
+  position: relative
+
+  .info-utility-wrapper
+    position: absolute
+    top: 0
+    right: 0
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    height: 100px
+    gap: 5px
+
+    #delete_info, #edit_info
+      width: 45px
+      flex-grow: 1
+      border: none
+      border-radius: 8px
+      background-color: red
+      color: white
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: 15px
+
+      &:hover
+        background-color: #f50000
+
+    #edit_info
+      background-color: #6669d4  
+
+      &:hover
+        background-color: #5054d2  
+
+
+  p
+    margin-bottom: 0 !important
+
+  article
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 0 0 10px 0
+
+    .title
+        margin-bottom: 8px
+        font-size: 28px
+
+    .date-wrapper
+      display: flex
+      width: 100%
+      gap: 10px
+      margin-top: 10px
+
+      .topic
+        color: #cd4522
+        font-weight: 600
+
+      .date-1, .date-2, .divider
+        color: #939393
+        font-weight: 600
+
+
+
+  .background-image-div
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+    width: 100%
+    height: 100%

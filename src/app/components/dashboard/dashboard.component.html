@@ -2,5 +2,9 @@
     <div class="dashboard">
         <h1>Dashboard</h1>
 
+
+        <section class="infos-section">
+            <app-info *ngFor="let info of firebaseInfo" [data]="info"></app-info>
+        </section>
     </div>
 </section>

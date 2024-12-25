@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Firestore, Timestamp, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, Timestamp, addDoc, collection, collectionData, deleteDoc, doc } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { Info } from '../interfaces/Info.interface';
 import { AdminUser } from '../interfaces/AminUser.interface';
@@ -60,5 +60,9 @@ export class FirebaseService {
   
     return from(promise);
   }
-  
+
+  deleteInfo(documentId: string): Observable<void> {
+    const docRef = doc(this.firestore, `info/${documentId}`);
+    return from(deleteDoc(docRef));
+  }
 }
