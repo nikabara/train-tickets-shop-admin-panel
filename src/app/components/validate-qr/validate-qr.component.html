@@ -1,6 +1,13 @@
 <section class="validate-qr-wrapper">
     <div class="validate-qr">
         <h1>Validate QR code</h1>
+        <button (click)="stopScanning();">Stop</button>
+        <button (click)="startScanning()">Resume</button>
+        <div class="video-wrapper">
+            <video id="video-element" autoplay muted></video>
+            <div class="video-overlay"></div>
+        </div>
 
+        <p class="result">Result: {{ ticketId }}</p>
     </div>
 </section>

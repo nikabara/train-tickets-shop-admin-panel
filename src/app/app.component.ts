@@ -4,6 +4,7 @@ import { FirebaseService } from './services/firebase.service';
 import { Timestamp } from '@angular/fire/firestore';
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
     RouterOutlet,
     RouterModule,
     SidebarComponent,
-    CommonModule
+    CommonModule,
+    ZXingScannerModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
