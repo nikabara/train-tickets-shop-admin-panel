@@ -1,3 +1,4 @@
+import { JwtService } from './../../services/JWT/jwt.service';
 import { FirebaseService } from './../../services/firebase.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 import { RateLimiterService } from '../../services/rate-limiter.service';
 import Swal from 'sweetalert2'
 import { RailwayticketsApiService } from '../../services/railwaytickets-api.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -22,6 +24,10 @@ export class LogInComponent implements OnInit {
 
   // testing
     // private railwayTicketsService: RailwayticketsApiService = inject(RailwayticketsApiService);
+
+  private authService: AuthService = inject(AuthService);
+  private jwtService: JwtService = inject(JwtService);
+
 
   isEyeVisible: boolean = false;
 
@@ -75,6 +81,57 @@ export class LogInComponent implements OnInit {
       sessionStorage.setItem('userType', `${this.userRole}`);
 
       this.router.navigate(['/dashboard'])
+    } else {
+      console.log('Form is invalid');
+    }
+
+    if (!this.rateLimiter.canAttempt()) {
+      Swal.fire({
+        icon: 'error',
+        title: "Too many Log-in attempts. Try again in 1 minute."
+      })
+    }
+
+    if (this.loginFormGroup.valid) {
+      this.rateLimiter.recordAttempt();
+    }
+  }
+
+  onSubbmitNew(): void {
+    if (this.loginFormGroup.valid && typeof sessionStorage !== 'undefined' && this.rateLimiter.canAttempt()) {
+      let serverResponse = this.authService.LogIn(this.loginFormGroup.value.email, this.loginFormGroup.value.password)
+        .subscribe({
+          next: (response) => {
+            if (response.isSuccess && response.data) {
+              localStorage.setItem("jwt_access_token", response.data);
+
+              const token = localStorage.getItem('jwt_access_token');
+
+              if (token) {
+                const payload = this.jwtService.decodeToken(token);
+
+                console.log(payload);
+
+                let userId = this.jwtService.getClaim(token, 'nameid');
+
+                console.log(`userid : ${userId}`);
+
+                if (userId) {
+                  this.authService.SendVerificationCode(userId).subscribe();
+                }
+              }
+            }
+          },
+          error: (message) => {
+            console.log(message);
+          }
+        });
+
+      // sessionStorage.setItem('isAuthed', this.isAdminUserFound().toString());
+      // this.getUserRole(this.loginFormGroup.value.email, this.loginFormGroup.value.password);
+      // sessionStorage.setItem('userType', `${this.userRole}`);
+
+      // this.router.navigate(['/dashboard'])
     } else {
       console.log('Form is invalid');
     }
