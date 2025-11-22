@@ -7,6 +7,7 @@ import { Timestamp } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { RateLimiterService } from '../../services/rate-limiter.service';
 import Swal from 'sweetalert2'
+import { RailwayticketsApiService } from '../../services/railwaytickets-api.service';
 
 @Component({
   selector: 'app-log-in',
@@ -18,6 +19,9 @@ export class LogInComponent implements OnInit {
   private firebaseService: FirebaseService = inject(FirebaseService);
   private rateLimiter: RateLimiterService = inject(RateLimiterService);
   private router: Router = inject(Router);
+
+  // testing
+    // private railwayTicketsService: RailwayticketsApiService = inject(RailwayticketsApiService);
 
   isEyeVisible: boolean = false;
 
@@ -39,21 +43,28 @@ export class LogInComponent implements OnInit {
         console.log(this.adminUsers);
       }
     )
+
+    // // testing
+    // this.railwayTicketsService.getTrain(2).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //   }
+    // )
   }
 
   userRole: string | undefined;
 
   getUserRole(email: string, password: string): void {
     this.userRole = this.adminUsers
-    .find((x: AdminUser) => 
-      (x.password === this.loginFormGroup.value.password) && 
+    .find((x: AdminUser) =>
+      (x.password === this.loginFormGroup.value.password) &&
       (x.email === this.loginFormGroup.value.email))?.role;
   }
 
   isAdminUserFound(): boolean {
     return !!this.adminUsers
-      .find((x: AdminUser) => 
-        (x.password === this.loginFormGroup.value.password) && 
+      .find((x: AdminUser) =>
+        (x.password === this.loginFormGroup.value.password) &&
         (x.email === this.loginFormGroup.value.email));
   }
 
