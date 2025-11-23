@@ -34,11 +34,21 @@
         </div>
 
         <div class="log-in-right">
-            <video class="train-go-video" autoplay loop muted playsinline>
+            <video *ngIf="!showVerificationCodePanel" class="train-go-video" autoplay loop muted playsinline>
                 <source src="/videos/train-go-animation.webm" type="video/webm">
                 Your browser does not support the video tag.
-              </video>
+            </video>
               <!-- <img src="/images/loginPic.png" alt=""> -->
+            <div *ngIf="showVerificationCodePanel" class="verification-code-wrapper">
+              <h2 class="verification-code-wrapper-title">Verification code was sent to your email</h2>
+
+              <div class="otp-container" ejs-otpinput type="number" length="6" (input)="input($event)"></div>
+
+              <div class="verification-utilities">
+                <button [disabled]="isButtonDisabled" (click)="verifyCode()" type="submit" id="verify-code" class="verify-code-button">Submit</button>
+                <a href="" class="resend-code">resend code</a>
+              </div>
+            </div>
         </div>
     </div>
 </section>

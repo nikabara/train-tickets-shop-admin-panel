@@ -13,7 +13,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     RouterModule,
     SidebarComponent,
     CommonModule,
-    ZXingScannerModule
+    ZXingScannerModule,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'

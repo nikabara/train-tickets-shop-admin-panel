@@ -23,4 +23,14 @@ export class AuthService {
   SendVerificationCode(userId: number): Observable<any> {
     return this.http.post(`${this.apiURL}/Auth/send-verification-code/${userId}`, null);
   }
+
+  VerifyVerificationCode(email: string, code: string): Observable<any> {
+    let params: HttpParams = new HttpParams().set("email", email).set("code", code);
+
+    return this.http.post(`${this.apiURL}/Auth/verify-verification-code`, null, {params: params});
+  }
+
+  VerifyUserAdmin(userId: number): Observable<any> {
+    return this.http.post(`${this.apiURL}/Auth/is-user-admin/${userId}`, null);
+  }
 }

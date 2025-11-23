@@ -1,3 +1,6 @@
+@import '../../../../node_modules/@syncfusion/ej2-base/styles/material.css'
+@import '../../../../node_modules/@syncfusion/ej2-inputs/styles/material.css'
+
 .log-in-section
     width: 100%
     height: 100vh
@@ -84,7 +87,7 @@
                     border: solid #edeff0 2px
                     border-radius: 8px
                     color: #92959c
-                    padding: 6px 6px 6px 10px 
+                    padding: 6px 6px 6px 10px
                     outline: none
                     font-size: 14px
                     margin-top: 5px
@@ -106,7 +109,7 @@
 
                     &:hover
                         background-color: #734cc7
-                        
+
 
         .log-in-right
             background-color: #f3f4f882
@@ -114,7 +117,7 @@
             display: flex
             justify-content: center
             align-items: center
-            
+
             img
                 border-radius: 15px
 
@@ -122,6 +125,73 @@
                 width: 350px
                 border-radius: 10%
 
+            .verification-code-wrapper
+              display: grid
+              grid-template-rows: 1fr 2fr 1fr
+              min-height: 200px
+              width: 100%
+              margin: 0 10px
+
+              .verification-code-wrapper-title
+                display: flex
+                align-items: center
+                justify-content: center
+                padding: 0 50px
+                text-align: center
+
+              .code-container
+                display: grid
+                grid-template-columns: repeat(6, 1fr)
+                align-content: center
+                justify-content: center
+                column-gap: 5px
+
+                .code-input
+                  width: 100%
+                  height: 90px
+                  border-radius: 10px
+                  border: #b4b6bb 2px solid
+                  outline: inherit
+
+                  &:focus
+                    border: #b4b6bb 2px solid
+                    outline: inherit
+
+              .verification-utilities
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: center
+                gap: 15px
+
+                .resend-code
+                  &:hover
+                    color: #734cc7
+
+                .verify-code-button
+                  width: 50%
+                  height: 50px
+                  border-radius: 8px
+                  border: none
+
+                  &:hover
+                    background-color: #7f56da
+                    color: white
+
+
 
 .eyeVisible
     display: none
+
+
+.e-otp-input-field
+  height: 70px !important
+  color: #57585a !important
+  font-size: 26px !important
+  font-weight: 500 !important
+  border: solid #96999b 2px !important
+  border-radius: 8px !important
+
+
+  &:focus
+    border: solid #7f56da 2px !important

@@ -1,7 +1,7 @@
 import { JwtService } from './../../services/JWT/jwt.service';
 import { FirebaseService } from './../../services/firebase.service';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, inject, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminUser } from '../../interfaces/AminUser.interface';
 import { Timestamp } from '@angular/fire/firestore';
@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 import { RateLimiterService } from '../../services/rate-limiter.service';
 import Swal from 'sweetalert2'
 import { RailwayticketsApiService } from '../../services/railwaytickets-api.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/Auth/auth.service';
+import { FormsModule } from '@angular/forms';
+import { OtpInputEventArgs, OtpInputModule } from '@syncfusion/ej2-angular-inputs'
 
 @Component({
   selector: 'app-log-in',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, OtpInputModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.sass'
 })
@@ -28,7 +30,6 @@ export class LogInComponent implements OnInit {
   private authService: AuthService = inject(AuthService);
   private jwtService: JwtService = inject(JwtService);
 
-
   isEyeVisible: boolean = false;
 
   toggleEyeVisibility(): void {
@@ -36,6 +37,7 @@ export class LogInComponent implements OnInit {
   }
 
   loginFormGroup!: FormGroup;
+
 
   ngOnInit(): void {
     this.loginFormGroup = new FormGroup({
@@ -56,6 +58,24 @@ export class LogInComponent implements OnInit {
     //     console.log(response);
     //   }
     // )
+  }
+
+  private code: string = "";
+  public showVerificationCodePanel: boolean = false;
+  public isButtonDisabled: boolean = true;
+
+  public input(args: OtpInputEventArgs){
+    if ('value' in args) {
+      this.code = args.value.toString();
+      console.log(this.code)
+    }
+
+    if (this.code.length == 6) {
+      this.isButtonDisabled = false;
+    }
+    else {
+      this.isButtonDisabled = true;
+    }
   }
 
   userRole: string | undefined;
@@ -97,6 +117,25 @@ export class LogInComponent implements OnInit {
     }
   }
 
+  verifyCode(): void {
+    console.log("first")
+    let token = localStorage.getItem("jwt_access_token");
+
+    if (token) {
+      console.log("second")
+      var userEmail = this.jwtService.getClaim(token, "email");
+
+      this.authService.VerifyVerificationCode(userEmail, this.code).subscribe({
+        next: (response) => {
+          if (response.isSuccess && response.data) {
+            console.log("third")
+            this.router.navigate(['/dashboard'])
+          }
+        }
+      })
+    }
+  }
+
   onSubbmitNew(): void {
     if (this.loginFormGroup.valid && typeof sessionStorage !== 'undefined' && this.rateLimiter.canAttempt()) {
       let serverResponse = this.authService.LogIn(this.loginFormGroup.value.email, this.loginFormGroup.value.password)
@@ -117,6 +156,7 @@ export class LogInComponent implements OnInit {
                 console.log(`userid : ${userId}`);
 
                 if (userId) {
+                  this.showVerificationCodePanel = true;
                   this.authService.SendVerificationCode(userId).subscribe();
                 }
               }

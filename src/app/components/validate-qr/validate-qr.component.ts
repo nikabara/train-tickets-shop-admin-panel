@@ -34,7 +34,7 @@ export class ValidateQrComponent implements OnInit, OnDestroy {
     const devices$ = new Observable<string>((observer) => {
       this.codeReader
         ?.listVideoInputDevices()
-        .then((devices) => {
+        .then((devices: MediaDeviceInfo[]) => {
           if (devices.length === 0) {
             observer.error('No camera found!');
           } else {
@@ -48,7 +48,7 @@ export class ValidateQrComponent implements OnInit, OnDestroy {
     // Subscribe to the observable
     this.scanSubscription = devices$.subscribe({
       next: (deviceId) => this.startDecoding(deviceId),
-      error: (err) => this.error$.next(err),
+      error: (err: any) => this.error$.next(err),
     });
   }
 
@@ -73,7 +73,7 @@ export class ValidateQrComponent implements OnInit, OnDestroy {
     this.scanSubscription?.add(
       decode$
         .pipe(
-          switchMap((text) => 
+          switchMap((text) =>
             of(text).pipe(delay(2000)) // Add a 2-second delay
           ),
           catchError((err) => {
