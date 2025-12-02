@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,5 +9,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.sass'
 })
 export class SidebarComponent {
-
+  public logOut(): void {
+    localStorage.removeItem("jwt_access_token");
+  }
 }

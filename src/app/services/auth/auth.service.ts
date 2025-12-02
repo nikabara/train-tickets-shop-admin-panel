@@ -33,4 +33,8 @@ export class AuthService {
   VerifyUserAdmin(userId: number): Observable<any> {
     return this.http.post(`${this.apiURL}/Auth/is-user-admin/${userId}`, null);
   }
+
+  IsUserVerified(userId: number): Observable<any> {
+    return this.http.post(`${this.apiURL}/Auth/is-user-verified/${userId}`, null);
+  }
 }
