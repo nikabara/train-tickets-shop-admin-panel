@@ -33,7 +33,8 @@
             ],
             "styles": [
               "node_modules/bootstrap-icons/font/bootstrap-icons.scss",
-              "src/styles.sass"
+              "src/styles.sass",
+              "./node_modules/@syncfusion/ej2-material-theme/styles/material.css"
             ],
             "scripts": [],
             "ssr": false,
@@ -94,7 +95,8 @@
               }
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "./node_modules/@syncfusion/ej2-material-theme/styles/material.css"
             ],
             "scripts": []
           }

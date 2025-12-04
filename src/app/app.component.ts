@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core';import { CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { FirebaseService } from './services/firebase.service';
 import { Timestamp } from '@angular/fire/firestore';
@@ -8,7 +9,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @Component({
   selector: 'app-root',
-  imports: [
+  imports: [CalendarModule, DatePickerModule, TimePickerModule, DateRangePickerModule, DateTimePickerModule, 
     RouterOutlet,
     RouterModule,
     SidebarComponent,

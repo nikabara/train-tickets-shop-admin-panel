@@ -1,0 +1,32 @@
+<section class="manage-trains-wrapper">
+  <div class="manage-trains">
+      <h1>Manage trains</h1>
+
+      <div class="train-managing-utilities">
+        <!-- <div class="utility-actions">
+          <button class="add-train utility-action gen">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+
+          <button class="filter-search utility-action rb">
+            <i class="bi bi-filter-square"></i>
+          </button>
+        </div> -->
+
+        <div class="train-search-wrapper">
+          <input class="search-train-input lb" type="text" placeholder="Train name...">
+          <input class="search-train-input nb bl" type="text" placeholder="Train number...">
+          <input class="search-train-input nb bl" type="text" placeholder="Departure Station...">
+          <input class="search-train-input nb bl" type="text" placeholder="Arrival Station...">
+          <ejs-datepicker class="time search-train-input nb bl" (change)="onDateChange($event)" placeholder="Departure"></ejs-datepicker>
+          <ejs-datepicker [cssClass]="'e-custom-style'" (change)="onDateChange($event)" class="time search-train-input nb bl" placeholder="Arrival"></ejs-datepicker>
+          <button class="search-train-button">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+<!--
+        <div class="search-filters"></div> -->
+      </div>
+  </div>
+
+</section>
