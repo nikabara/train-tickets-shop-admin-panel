@@ -1,11 +1,9 @@
 import { Routes } from '@angular/router';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ComposeComponent } from './components/compose/compose.component';
 import { ValidateTicketComponent } from './components/validate-ticket/validate-ticket.component';
 import { ValidateQrComponent } from './components/validate-qr/validate-qr.component';
 import { AccessGuard } from './guards/access-guard.guard';
-import { AddTrainComponent } from './components/manage-schedule/manage-schedule.component';
 
 export const routes: Routes = [
     { path: '', component: LogInComponent },
@@ -26,10 +24,10 @@ export const routes: Routes = [
     },
     {
       path: 'schedule/edit-schedule/:id',
-      title: 'Edit train',
+      title: 'Edit schedule',
       canActivate: [AccessGuard],
-      loadComponent: () => import('./components/edit-train/edit-train.component')
-        .then((m) => m.EditTrainComponent)
+      loadComponent: () => import('./components/edit-schedule/edit-schedule.component')
+        .then((m) => m.EditScheduleComponent)
     },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },

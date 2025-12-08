@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-edit-train',
   imports: [],
-  templateUrl: './edit-train.component.html',
-  styleUrl: './edit-train.component.sass'
+  templateUrl: './edit-schedule.component.html',
+  styleUrl: './edit-schedule.component.sass'
 })
-export class EditTrainComponent implements OnInit {
+export class EditScheduleComponent implements OnInit {
 
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
 
