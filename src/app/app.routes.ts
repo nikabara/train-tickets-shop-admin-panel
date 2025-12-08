@@ -5,7 +5,7 @@ import { ComposeComponent } from './components/compose/compose.component';
 import { ValidateTicketComponent } from './components/validate-ticket/validate-ticket.component';
 import { ValidateQrComponent } from './components/validate-qr/validate-qr.component';
 import { AccessGuard } from './guards/access-guard.guard';
-import { AddTrainComponent } from './components/manage-train/manage-train.component';
+import { AddTrainComponent } from './components/manage-schedule/manage-schedule.component';
 
 export const routes: Routes = [
     { path: '', component: LogInComponent },
@@ -18,11 +18,18 @@ export const routes: Routes = [
             .then((m) => m.DashboardComponent)
     },
     {
-      path: 'add-train',
-      title: 'Add train',
+      path: 'schedule/manage-schedules',
+      title: 'Manage trains',
       canActivate: [AccessGuard],
-      loadComponent: () => import('./components/manage-train/manage-train.component')
+      loadComponent: () => import('./components/manage-schedule/manage-schedule.component')
         .then((m) => m.AddTrainComponent)
+    },
+    {
+      path: 'schedule/edit-schedule/:id',
+      title: 'Edit train',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/edit-train/edit-train.component')
+        .then((m) => m.EditTrainComponent)
     },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },

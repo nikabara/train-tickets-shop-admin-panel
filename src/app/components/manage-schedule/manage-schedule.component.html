@@ -1,0 +1,65 @@
+<section class="manage-schedules-wrapper">
+  <div class="manage-schedules">
+      <h1>Manage schedules</h1>
+
+      <div class="schedule-managing-utilities">
+        <!-- <div class="utility-actions">
+          <button class="add-train utility-action gen">
+            <i class="bi bi-plus-lg"></i>
+          </button>
+
+          <button class="filter-search utility-action rb">
+            <i class="bi bi-filter-square"></i>
+          </button>
+        </div> -->
+
+        <form class="schedule-search-wrapper" (ngSubmit)="searchSchedule()" [formGroup]="filterForm">
+          <input formControlName="trainName" class="search-schedule-input lb" type="text" placeholder="Train name...">
+          <input formControlName="trainNumber" class="search-schedule-input nb bl" type="text" placeholder="Train number...">
+          <input formControlName="departureFrom" class="search-schedule-input nb bl" type="text" placeholder="Departure Station...">
+          <input formControlName="arrivalAt" class="search-schedule-input nb bl" type="text" placeholder="Arrival Station...">
+          <ejs-datepicker class="time search-schedule-input nb bl" (change)="onDateChangeDeparture($event)" placeholder="Departure"></ejs-datepicker>
+          <ejs-datepicker [cssClass]="'e-custom-style'" (change)="onDateChangeArrival($event)" class="time search-schedule-input nb bl" placeholder="Arrival"></ejs-datepicker>
+          <button class="search-schedule-button" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="table-scroll-container">
+        <table class="schedule-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Schedule Id</th>
+              <th>Train Name</th>
+              <th>Train Number</th>
+              <th>Departure</th>
+              <th>Arrival</th>
+              <th>Manage</th> </tr>
+          </thead>
+          <tbody>
+            <tr class="data-tr" *ngFor="let schedule of filteredSchedules">
+              <td>{{schedule.scheduleId}}</td>
+              <td>{{schedule.trainName}}</td>
+              <td>{{schedule.trainNumber}}</td>
+              <td>
+                <div *ngIf="schedule.departureFrom.length > 0">{{schedule.departureFrom}} : </div>
+                <div *ngIf="schedule.departureDate != null">{{schedule.departureDate}}</div>
+                <div *ngIf="schedule.departureFrom.length == 0 && schedule.departureDate == null">Unscheduled</div>
+              </td>
+              <td>
+                <div *ngIf="schedule.arrivalAt.length > 0">{{schedule.arrivalAt}} : </div>
+                <div *ngIf="schedule.arrivalDate != null">{{schedule.arrivalDate}}</div>
+                <div *ngIf="schedule.arrivalAt.length == 0 && schedule.arrivalDate == null">Unscheduled</div>
+              </td>
+              <td class="utilities-td">
+                <button (click)="removeSchedule(schedule.scheduleId)" class="delete-schedule-button">Delete</button>
+                <a [routerLink]="['/schedule/edit-schedule', schedule.scheduleId]" class="edit-schedule-button">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+</section>

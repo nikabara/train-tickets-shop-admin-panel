@@ -1,4 +1,5 @@
-export interface TrainFilter {
+export interface ScheduleFilter {
+  scheduleId: number,
   trainId: number,
   trainName: string,
   trainNumber: number | null,

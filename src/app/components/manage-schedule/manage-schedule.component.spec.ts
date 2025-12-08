@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddTrainComponent } from './manage-train.component';
+import { AddTrainComponent } from './manage-schedule.component';
 
 describe('AddTrainComponent', () => {
   let component: AddTrainComponent;
