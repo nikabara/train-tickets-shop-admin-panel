@@ -42,8 +42,16 @@
               <td>{{train.trainId}}</td>
               <td>{{train.trainName}}</td>
               <td>{{train.trainNumber}}</td>
-              <td>{{train.departureFrom}} : {{train.departureDate}}</td>
-              <td>{{train.arrivalAt}} : {{train.arrivalDate}}</td>
+              <td>
+                <div *ngIf="train.departureFrom.length > 0">{{train.departureFrom}} : </div>
+                <div *ngIf="train.departureDate != null">{{train.departureDate}}</div>
+                <div *ngIf="train.departureFrom.length == 0 && train.departureDate == null">Unscheduled</div>
+              </td>
+              <td>
+                <div *ngIf="train.arrivalAt.length > 0">{{train.arrivalAt}} : </div>
+                <div *ngIf="train.arrivalDate != null">{{train.arrivalDate}}</div>
+                <div *ngIf="train.arrivalAt.length == 0 && train.arrivalDate == null">Unscheduled</div>
+              </td>
               <td class="utilities-td">
                 <button (click)="removeTrain(train.trainId)" class="delete-train-button">Delete</button>
                 <button class="edit-train-button">Edit</button>

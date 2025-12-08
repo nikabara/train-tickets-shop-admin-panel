@@ -49,7 +49,7 @@ export class AddTrainComponent {
 
       let fitlerModel: any = {
         trainName: formData.trainName,
-        trainNumber: formData.trainNumber,
+        trainNumber: formData.trainNumber == "" ? null :  formData.trainNumber,
         departureFrom: formData.departureFrom,
         arrivalAt: formData.arrivalAt,
         departureDate: this.departureDate == null || this.departureDate == undefined ? null : new Date(this.departureDate).toISOString(),
