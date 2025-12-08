@@ -29,7 +29,7 @@
       <div class="table-scroll-container">
         <table class="train-data-table">
           <thead>
-            <tr>
+            <tr class="sticky-header-row">
               <th>Id</th>
               <th>Name</th>
               <th>Number</th>
@@ -39,12 +39,13 @@
           </thead>
           <tbody>
             <tr class="data-tr" *ngFor="let train of filteredTrains">
-              <td>1</td> <td>{{train.trainName}}</td>
+              <td>{{train.trainId}}</td>
+              <td>{{train.trainName}}</td>
               <td>{{train.trainNumber}}</td>
               <td>{{train.departureFrom}} : {{train.departureDate}}</td>
               <td>{{train.arrivalAt}} : {{train.arrivalDate}}</td>
               <td class="utilities-td">
-                <button class="delete-train-button">Delete</button>
+                <button (click)="removeTrain(train.trainId)" class="delete-train-button">Delete</button>
                 <button class="edit-train-button">Edit</button>
               </td>
             </tr>

@@ -4,6 +4,8 @@ import { TrainFilterService } from './../../services/AppServices/train-filter.se
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ChangeEventArgs, DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { RouterLink } from "@angular/router";
+import { TrainService } from '../../services/AppServices/train.service';
 
 @Component({
   selector: 'app-add-train',
@@ -14,6 +16,7 @@ import { ChangeEventArgs, DatePickerModule } from '@syncfusion/ej2-angular-calen
 export class AddTrainComponent {
 
   private trainFilterService: TrainFilterService = inject(TrainFilterService);
+  private trainService: TrainService = inject(TrainService);
 
   public departureDate: Date | null | undefined = null;
   public arrivalDate: Date | null | undefined = null;
@@ -44,7 +47,7 @@ export class AddTrainComponent {
     if (this.filterForm.valid) {
       const formData = this.filterForm.value;
 
-      let fitlerModel: TrainFilter = {
+      let fitlerModel: any = {
         trainName: formData.trainName,
         trainNumber: formData.trainNumber,
         departureFrom: formData.departureFrom,
@@ -66,5 +69,15 @@ export class AddTrainComponent {
 
       console.log(fitlerModel);
     }
+  }
+
+  removeTrain(trainId: number){
+    this.trainService.RemoveTrain(trainId).subscribe({
+      next: (response) => {
+        if (response.data) {
+          this.searchTrain();
+        }
+      }
+    })
   }
 }

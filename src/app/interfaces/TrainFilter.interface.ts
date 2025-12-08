@@ -1,4 +1,5 @@
 export interface TrainFilter {
+  trainId: number,
   trainName: string,
   trainNumber: number,
   departureFrom: string,
