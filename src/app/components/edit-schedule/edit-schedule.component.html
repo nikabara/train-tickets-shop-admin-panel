@@ -1,1 +1,20 @@
-<p>{{trainId}}</p>
+<section class="edit-schedule-wrapper">
+  <div class="edit-schedule">
+      <h1>Edit schedule</h1>
+
+      <form (ngSubmit)="updateSchedule()" [formGroup]="updateForm">
+        <label for="">Train Id</label>
+        <input formControlName="trainId" class="trainId-input" type="text" placeholder="{{scheduleToEdit?.trainId}}">
+        <label for="">Departure</label>
+        <input formControlName="departureFrom" class="departureFrom-input" type="text" placeholder="{{scheduleToEdit?.departureFrom}}">
+        <label for="">Arrival</label>
+        <input formControlName="arrivalAt" class="arrivalAt-input" type="text" placeholder="{{scheduleToEdit?.arrivalAt}}">
+        <label for="">Departure date</label>
+        <ejs-datetimepicker value="{{scheduleToEdit?.departureDate}}" class="departureDate-input" (change)="onDateChangeDeparture($event)" placeholder="Departure"></ejs-datetimepicker>
+        <label for="">Arrival date</label>
+        <ejs-datetimepicker value="{{scheduleToEdit?.arrivalDate}}" class="arrivalDate-input" (change)="onDateChangeArrival($event)" class="time search-schedule-input nb bl" placeholder="Arrival"></ejs-datetimepicker>
+
+        <button type="submit">subbmit</button>
+      </form>
+  </div>
+</section>

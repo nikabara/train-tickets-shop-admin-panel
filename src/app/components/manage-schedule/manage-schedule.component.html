@@ -44,12 +44,12 @@
               <td>{{schedule.trainNumber}}</td>
               <td>
                 <div *ngIf="schedule.departureFrom.length > 0">{{schedule.departureFrom}} : </div>
-                <div *ngIf="schedule.departureDate != null">{{schedule.departureDate}}</div>
+                <div *ngIf="schedule.departureDate != null">{{schedule.departureDate | date:'MM/dd/yyyy h:mm a'}}</div>
                 <div *ngIf="schedule.departureFrom.length == 0 && schedule.departureDate == null">Unscheduled</div>
               </td>
               <td>
                 <div *ngIf="schedule.arrivalAt.length > 0">{{schedule.arrivalAt}} : </div>
-                <div *ngIf="schedule.arrivalDate != null">{{schedule.arrivalDate}}</div>
+                <div *ngIf="schedule.arrivalDate != null">{{schedule.arrivalDate | date:'MM/dd/yyyy h:mm a'}}</div>
                 <div *ngIf="schedule.arrivalAt.length == 0 && schedule.arrivalDate == null">Unscheduled</div>
               </td>
               <td class="utilities-td">

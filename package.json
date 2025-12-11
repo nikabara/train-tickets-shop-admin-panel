@@ -24,6 +24,7 @@
     "@angular/ssr": "^19.0.4",
     "@syncfusion/ej2-angular-calendars": "^31.2.16",
     "@syncfusion/ej2-angular-inputs": "^31.2.12",
+    "@syncfusion/ej2-material-theme": "~31.2.16",
     "@zxing/browser": "^0.1.5",
     "@zxing/library": "^0.21.3",
     "@zxing/ngx-scanner": "^19.0.0",
@@ -34,10 +35,9 @@
     "ngx-cookie-service": "^19.0.0",
     "ngx-qrscanner": "^0.0.1-security",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.15.3",
+    "sweetalert2": "^11.26.4",
     "tslib": "^2.3.0",
-    "zone.js": "^0.15.0",
-    "@syncfusion/ej2-material-theme": "~31.2.16"
+    "zone.js": "^0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.0.4",
