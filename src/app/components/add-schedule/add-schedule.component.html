@@ -1,0 +1,21 @@
+<section class="add-schedule-wrapper">
+  <div class="add-schedule">
+    <h1>Add schedule</h1>
+
+
+    <form (ngSubmit)="addSchedule()" [formGroup]="addForm">
+      <label for="">Train Id</label>
+      <input formControlName="trainId" class="trainId-input" type="text">
+      <label for="">Departure</label>
+      <input formControlName="departureFrom" class="departureFrom-input" type="text">
+      <label for="">Arrival</label>
+      <input formControlName="arrivalAt" class="arrivalAt-input" type="text">
+      <label for="">Departure date</label>
+      <ejs-datetimepicker class="departureDate-input" (change)="onDateChangeDeparture($event)" placeholder="Departure"></ejs-datetimepicker>
+      <label for="">Arrival date</label>
+      <ejs-datetimepicker class="arrivalDate-input" (change)="onDateChangeArrival($event)" class="time search-schedule-input nb bl" placeholder="Arrival"></ejs-datetimepicker>
+
+      <button type="submit">Add schedule</button>
+    </form>
+  </div>
+</section>

@@ -9,11 +9,11 @@ export const routes: Routes = [
     { path: '', component: LogInComponent },
     { path: 'log-in', component: LogInComponent, title: 'Log In' },
     {
-        path: 'dashboard',
-        title: 'Dashboard',
-        canActivate: [AccessGuard],
-        loadComponent: () => import('./components/dashboard/dashboard.component')
-            .then((m) => m.DashboardComponent)
+      path: 'dashboard',
+      title: 'Dashboard',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/dashboard/dashboard.component')
+          .then((m) => m.DashboardComponent)
     },
     {
       path: 'schedule/manage-schedules',
@@ -28,6 +28,13 @@ export const routes: Routes = [
       canActivate: [AccessGuard],
       loadComponent: () => import('./components/edit-schedule/edit-schedule.component')
         .then((m) => m.EditScheduleComponent)
+    },
+    {
+      path: 'schedule/add-schedule',
+      title: 'Add schedule',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/add-schedule/add-schedule.component')
+        .then((m) => m.AddScheduleComponent)
     },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },

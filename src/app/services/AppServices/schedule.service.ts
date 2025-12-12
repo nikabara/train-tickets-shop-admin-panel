@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ServiceResponse } from '../../interfaces/common/ServiceResponse.interface';
 import { GetTrainSchedule } from '../../interfaces/ISchedule/GetTrainSchedule.interface';
 import { UpdateTrainSchedule } from '../../interfaces/ISchedule/UpdateTrainSchedule.interface';
+import { AddTrainSchedule } from '../../interfaces/ISchedule/AddTrainSchedule.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class ScheduleService {
 
   EditSchedule(schedule: UpdateTrainSchedule): Observable<ServiceResponse<boolean>> {
     return this.http.put<ServiceResponse<boolean>>(`${this.url}/TrainSchedule/update-train-schedule`, schedule);
+  }
+
+  AddSchedule(schedule: AddTrainSchedule): Observable<ServiceResponse<number>> {
+    return this.http.post<ServiceResponse<number>>(`${this.url}/TrainSchedule/add-train-schedule`, schedule);
   }
 }

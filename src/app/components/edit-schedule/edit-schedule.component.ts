@@ -6,7 +6,6 @@ import { ChangeEventArgs, DatePickerModule, DateTimePickerModule } from "@syncfu
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateTrainSchedule } from '../../interfaces/ISchedule/UpdateTrainSchedule.interface';
 import Swal from 'sweetalert2'
-import { response } from 'express';
 
 @Component({
   selector: 'app-edit-train',
@@ -77,7 +76,7 @@ export class EditScheduleComponent implements OnInit {
 
       let newSchedule: UpdateTrainSchedule = {
         trainScheduleId: this.scheduleId,
-        trainId: formData.trainId,
+        trainId: formData.trainId == "" ? null : formData.trainId,
         departureFrom: formData.departureFrom,
         arrivalAt: formData.arrivalAt,
         departureDate: this.departureDate != null && this.departureDate != undefined ? this.departureDate : null,
