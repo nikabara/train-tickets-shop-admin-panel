@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,11 @@ export class UserService {
   http: HttpClient = inject(HttpClient);
 
   GetUser(userId: number): Observable<any> {
-    return this.http.get(`${this.url}/User/admin/get-user/${userId}`)
+    const jwtAccessToken = localStorage.getItem('jwt_access_token');
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${jwtAccessToken}`);
+
+    return this.http.get(`${this.url}/User/admin/get-user/${userId}`, {headers: headers});
   }
 
 }

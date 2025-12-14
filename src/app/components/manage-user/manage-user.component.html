@@ -1,0 +1,67 @@
+<section class="manage-user-wrapper">
+  <div class="manage-user">
+    <div class="top-util">
+      <h1>Manage users</h1>
+      <a [routerLink]="['/user/add-user']"><i class="bi bi-plus-circle"></i></a>
+    </div>
+
+    <div class="user-managing-utilities">
+      <!-- <div class="utility-actions">
+        <button class="add-train utility-action gen">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+
+        <button class="filter-search utility-action rb">
+          <i class="bi bi-filter-square"></i>
+        </button>
+      </div> -->
+
+      <form class="user-search-wrapper" (ngSubmit)="searchUsers()" [formGroup]="filterForm">
+        <input formControlName="UserId"  class="search-user-input mid lb" type="number" placeholder="User Id...">
+        <input formControlName="UserRoleId"  class="search-user-input mid bl" type="number" placeholder="User Role Id...">
+        <input formControlName="Name"  class="search-user-input mid bl" type="text" placeholder="Name...">
+        <input formControlName="LastName"  class="search-user-input mid bl" type="text" placeholder="Last Name...">
+        <input formControlName="Age"  class="search-user-input mid bl" type="number" placeholder="Age...">
+        <input formControlName="Email"  class="search-user-input mid bl" type="text" placeholder="Email...">
+        <input formControlName="PhoneNumber"  class="search-user-input mid bl" type="text" placeholder="Phone number...">
+
+        <button class="search-user-button" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+
+
+      <div class="table-scroll-container">
+        <table class="user-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>User Id</th>
+              <th>User Role Id</th>
+              <th>Name</th>
+              <th>Last-name</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Phone numbers</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-tr" *ngFor="let user of filteredUsers">
+              <td>{{user.userId}}</td>
+              <td>{{user.userRoleId | roleIdToRoleName }}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.age}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phoneNumber}}</td>
+              <td class="utilities-td">
+                <button (click)="removeUser(user.userId)" class="delete-user-button">Delete</button>
+                <a [routerLink]="['/user/user-details', user.userId]" class="user-details-button">Details</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

@@ -17,7 +17,7 @@ export const routes: Routes = [
     },
     {
       path: 'schedule/manage-schedules',
-      title: 'Manage trains',
+      title: 'Manage shcedules',
       canActivate: [AccessGuard],
       loadComponent: () => import('./components/manage-schedule/manage-schedule.component')
         .then((m) => m.AddTrainComponent)
@@ -35,6 +35,20 @@ export const routes: Routes = [
       canActivate: [AccessGuard],
       loadComponent: () => import('./components/add-schedule/add-schedule.component')
         .then((m) => m.AddScheduleComponent)
+    },
+    {
+      path: 'user/manage-user',
+      title: 'Manage users',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/manage-user/manage-user.component')
+        .then((m) => m.ManageUserComponent)
+    },
+    {
+      path: 'user/user-details/:id',
+      title: 'User details',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/user-details/user-details.component')
+        .then((m) => m.UserDetailsComponent)
     },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },
