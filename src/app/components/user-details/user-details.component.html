@@ -1,5 +1,45 @@
 <section class="user-details-wrapper">
   <div class="user-details">
     <h1>User details</h1>
+
+    <div class="user-details-inner">
+      <p class="user-id details-paragraph">User Id : {{user.userId}}</p>
+      <p class="user-userRoleId details-paragraph">Role Id : {{user.userRoleId}}</p>
+      <p class="user-name details-paragraph">Name : {{user.name}}</p>
+      <p class="user-lastname details-paragraph">LastName : {{user.lastName}}</p>
+      <p class="user-age details-paragraph">Age : {{user.age}}</p>
+      <p class="user-email details-paragraph">Email : {{user.email}}</p>
+      <p class="user-phoneNumber details-paragraph">Phone number : {{user.phoneNumber}}</p>
+      <p class="user-balance details-paragraph">Balance : {{user.balance}}₾</p>
+      <p class="user-registrationDate details-paragraph">Registration date : {{user.registrationDate}}</p>
+      <p class="user-isVerified details-paragraph">Verified : {{user.isVerified}}</p>
+    </div>
+
+    <h1>User transaction details</h1>
+
+    <div class="transaction" *ngFor="let transaction of transactions">
+      <h3>Transaction</h3>
+      <p>Transaction id : {{transaction.transactionId}}</p>
+      <p>Transaction state : {{transaction.transactionState}}</p>
+      <p>Transaction amount : {{transaction.transactionAmount}}₾</p>
+      <p>Transaction date : {{transaction.transactionDate}}</p>
+
+      <h3>Credit card</h3>
+      <p>Credit card id : {{transaction.creditCard.creditCardId}}</p>
+      <p>Credit card number : {{transaction.creditCard.creditCardNumber}}</p>
+      <p>Expiration date : {{transaction.creditCard.expirationDate}}</p>
+      <p>CVV : {{transaction.creditCard.cvv}}</p>
+
+      <h3>Seat</h3>
+      <p>Seat id : {{transaction.seat.seatId}}</p>
+      <p>Seat vagon id : {{transaction.seat.vagonId}}</p>
+      <p>Seat number : {{transaction.seat.seatNumber}}</p>
+      <p>Seat price : {{transaction.seat.seatPrice}}₾</p>
+      <p>Seat status : {{transaction.seat.seatStatusId}}</p>
+
+      <h3>Active train schedules</h3>
+      <p>Departure : {{transaction.trainSchedule.departureFrom}} - {{transaction.trainSchedule.departureDate}}</p>
+      <p>Arrival : {{transaction.trainSchedule.arrivalAt}} - {{transaction.trainSchedule.arrivalDate}}</p>
+    </div>
   </div>
 </section>
