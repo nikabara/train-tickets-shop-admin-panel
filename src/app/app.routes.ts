@@ -50,6 +50,13 @@ export const routes: Routes = [
       loadComponent: () => import('./components/user-details/user-details.component')
         .then((m) => m.UserDetailsComponent)
     },
+    {
+      path: 'train/manage-trains',
+      title: 'Manage trains',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/manage-trains/manage-trains.component')
+        .then((m) => m.ManageTrainsComponent)
+    },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },
     { path: 'validate-qr', component: ValidateQrComponent, title: 'Validate QR', canActivate: [AccessGuard] },

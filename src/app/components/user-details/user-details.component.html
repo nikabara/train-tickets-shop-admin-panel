@@ -18,28 +18,102 @@
     <h1>User transaction details</h1>
 
     <div class="transaction" *ngFor="let transaction of transactions">
-      <h3>Transaction</h3>
-      <p>Transaction id : {{transaction.transactionId}}</p>
-      <p>Transaction state : {{transaction.transactionState}}</p>
-      <p>Transaction amount : {{transaction.transactionAmount}}₾</p>
-      <p>Transaction date : {{transaction.transactionDate}}</p>
 
-      <h3>Credit card</h3>
-      <p>Credit card id : {{transaction.creditCard.creditCardId}}</p>
-      <p>Credit card number : {{transaction.creditCard.creditCardNumber}}</p>
-      <p>Expiration date : {{transaction.creditCard.expirationDate}}</p>
-      <p>CVV : {{transaction.creditCard.cvv}}</p>
+      <div class="table-scroll-container">
+        <h3>Transaction</h3>
+        <table class="user-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Transaction id</th>
+              <th>Transaction state</th>
+              <th>Transaction amount</th>
+              <th>Transaction date</th>
+            </tr>
+            <tr>
+              <th>{{transaction.transactionId}}</th>
+              <th>{{transaction.transactionState}}</th>
+              <th>{{transaction.transactionAmount}}₾</th>
+              <th>{{transaction.transactionDate}}</th>
+            </tr>
+          </thead>
+          <tbody>
 
-      <h3>Seat</h3>
-      <p>Seat id : {{transaction.seat.seatId}}</p>
-      <p>Seat vagon id : {{transaction.seat.vagonId}}</p>
-      <p>Seat number : {{transaction.seat.seatNumber}}</p>
-      <p>Seat price : {{transaction.seat.seatPrice}}₾</p>
-      <p>Seat status : {{transaction.seat.seatStatusId}}</p>
+          </tbody>
+        </table>
+      </div>
 
-      <h3>Active train schedules</h3>
-      <p>Departure : {{transaction.trainSchedule.departureFrom}} - {{transaction.trainSchedule.departureDate}}</p>
-      <p>Arrival : {{transaction.trainSchedule.arrivalAt}} - {{transaction.trainSchedule.arrivalDate}}</p>
+      <div class="table-scroll-container">
+        <h3>Credit card</h3>
+        <table class="user-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Credit card id</th>
+              <th>Credit card number</th>
+              <th>Expiration date</th>
+              <th>CVV</th>
+            </tr>
+            <tr>
+              <th>{{transaction.creditCard.creditCardId}}</th>
+              <th>{{transaction.creditCard.creditCardNumber}}</th>
+              <th>{{transaction.creditCard.expirationDate}}</th>
+              <th>{{transaction.creditCard.cvv}}</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll-container">
+        <h3>Seat</h3>
+        <table class="user-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Seat id</th>
+              <th>Seat vagon id</th>
+              <th>Seat number</th>
+              <th>Seat price</th>
+              <th>Seat status</th>
+            </tr>
+            <tr>
+              <th>{{transaction.seat.seatId}}</th>
+              <th>{{transaction.seat.vagonId}}</th>
+              <th>{{transaction.seat.seatNumber}}</th>
+              <th>{{transaction.seat.seatPrice}}₾</th>
+              <th>{{transaction.seat.seatStatusId}}</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll-container">
+        <h3>Active train schedules</h3>
+        <table class="user-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Departure</th>
+              <th>Departure date</th>
+              <th>Arrival</th>
+              <th>Arrival date</th>
+            </tr>
+            <tr>
+              <th>{{transaction.trainSchedule.departureFrom}}</th>
+              <th>{{transaction.trainSchedule.departureDate}}</th>
+              <th>{{transaction.trainSchedule.arrivalAt}}</th>
+              <th>{{transaction.trainSchedule.arrivalDate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
     </div>
+
+
   </div>
 </section>
