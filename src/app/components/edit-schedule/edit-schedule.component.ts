@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GetTrainSchedule } from '../../interfaces/ISchedule/GetTrainSchedule.interface';
+import { GetSchedule } from '../../interfaces/ISchedule/GetSchedule.interface';
 import { ScheduleService } from '../../services/AppServices/schedule.service';
 import { ChangeEventArgs, DatePickerModule, DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,17 +20,17 @@ export class EditScheduleComponent implements OnInit {
 
   private scheduleId: number| undefined;
 
-  public scheduleToEdit: GetTrainSchedule | undefined;
+  public scheduleToEdit: GetSchedule | undefined;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const idString = params.get('id');
 
       if (idString) {
-        let trainId: number = Number.parseInt(idString);
-        this.scheduleId = trainId;
+        let scheduleId: number = Number.parseInt(idString);
+        this.scheduleId = scheduleId;
 
-        this.scheduleService.GetSchedule(trainId).subscribe({
+        this.scheduleService.GetSchedule(scheduleId).subscribe({
           next: (response) => {
             this.scheduleToEdit = response.data;
           },

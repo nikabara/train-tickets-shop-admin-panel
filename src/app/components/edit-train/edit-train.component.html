@@ -1,0 +1,18 @@
+<section class="edit-train-wrapper">
+  <div class="edit-train">
+    <div class="top-util">
+      <h1>Manage trains</h1>
+    </div>
+
+    <form (ngSubmit)="updateTrain()" [formGroup]="updateForm">
+      <label for="">Train Id</label>
+      <input [disabled]="true" class="trainId-input" type="number" placeholder="{{trainToEdit?.trainId}}">
+      <label for="">Train number</label>
+      <input formControlName="trainNumber" class="trainNumber-input" type="number" placeholder="{{trainToEdit?.trainNumber}}">
+      <label for="">Train name</label>
+      <input formControlName="trainName" class="trainName-input" type="text" placeholder="{{trainToEdit?.trainName}}">
+
+      <button type="submit">subbmit</button>
+    </form>
+  </div>
+</section>

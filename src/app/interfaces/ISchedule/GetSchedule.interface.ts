@@ -1,4 +1,4 @@
-export interface GetTrainSchedule {
+export interface GetSchedule {
   trainScheduleId: number,
   trainId: number,
   departureFrom: string,

@@ -57,6 +57,20 @@ export const routes: Routes = [
       loadComponent: () => import('./components/manage-trains/manage-trains.component')
         .then((m) => m.ManageTrainsComponent)
     },
+    {
+      path: 'train/edit-train/:id',
+      title: 'Edit train',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/edit-train/edit-train.component')
+        .then((m) => m.EditTrainComponent)
+    },
+    {
+      path: 'train/add-train',
+      title: 'Add train',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/add-train/add-train.component')
+        .then((m) => m.AddTrainComponent)
+    },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },
     { path: 'validate-qr', component: ValidateQrComponent, title: 'Validate QR', canActivate: [AccessGuard] },

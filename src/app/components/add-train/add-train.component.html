@@ -1,0 +1,21 @@
+<section class="add-train-wrapper">
+  <div class="add-train">
+    <h1>Add train</h1>
+
+
+    <form (ngSubmit)="addTrain()" [formGroup]="addForm">
+      <label for="">Train number></label>
+      <small *ngIf="validation_error['trainNumber'].invalid &&
+             (validation_error['trainNumber'].dirty || validation_error['trainNumber'].touched) &&
+             validation_error['trainNumber'].errors?.['required']">Train number required
+      </small>
+      <input formControlName="trainNumber" class="trainNumber-input" type="number" placeholder="Type...">
+
+      <label for="">Train name</label>
+      <small *ngIf="validation_error['trainName'].invalid && (validation_error['trainName'].dirty || validation_error['trainName'].touched) && validation_error['trainName'].errors?.['required']">Train name required</small>
+      <input formControlName="trainName" class="trainName-input" type="text" placeholder="Type...">
+
+      <button type="submit">Add train</button>
+    </form>
+  </div>
+</section>

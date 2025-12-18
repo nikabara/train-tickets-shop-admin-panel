@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceResponse } from '../../interfaces/common/ServiceResponse.interface';
-import { GetTrainSchedule } from '../../interfaces/ISchedule/GetTrainSchedule.interface';
+import { GetSchedule } from '../../interfaces/ISchedule/GetSchedule.interface';
 import { UpdateTrainSchedule } from '../../interfaces/ISchedule/UpdateTrainSchedule.interface';
 import { AddTrainSchedule } from '../../interfaces/ISchedule/AddTrainSchedule.interface';
 
@@ -19,8 +19,8 @@ export class ScheduleService {
     return this.http.delete<ServiceResponse<boolean>>(`${this.url}/TrainSchedule/remove-train-schedule/${scheduleId}`);
   }
 
-  GetSchedule(scheduleId: number): Observable<ServiceResponse<GetTrainSchedule>> {
-    return this.http.get<ServiceResponse<GetTrainSchedule>>(`${this.url}/TrainSchedule/get-train-schedule/${scheduleId}`);
+  GetSchedule(scheduleId: number): Observable<ServiceResponse<GetSchedule>> {
+    return this.http.get<ServiceResponse<GetSchedule>>(`${this.url}/TrainSchedule/get-train-schedule/${scheduleId}`);
   }
 
   EditSchedule(schedule: UpdateTrainSchedule): Observable<ServiceResponse<boolean>> {
