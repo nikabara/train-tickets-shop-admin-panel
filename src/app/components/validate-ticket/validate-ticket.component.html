@@ -3,7 +3,7 @@
         <h1>Validate ticket id</h1>
 
         <div class="input-wrapper">
-            <input class="ticket-id" type="text" placeholder="Fill ticket-id in here" [(ngModel)]="ticketId">
+            <input class="ticket-id" type="text" placeholder="Fill ticket-id in here" [(ngModel)]="ticketNumber">
             <button id="validate_ticket_button" (click)="validateTicket()"><i class="bi bi-search"></i></button>
         </div>
 
@@ -11,7 +11,7 @@
             <h1 style="color: green;">Ticket found</h1>
         </div>
 
-        <div *ngIf="!ticketInfo || ticketId.length === 0">
+        <div *ngIf="!ticketInfo || ticketNumber.length === 0">
             <h1 style="color: red;">No tickets found</h1>
         </div>
 
@@ -19,56 +19,59 @@
             <div class="row-1 rows">
                 <h4>Travel info</h4>
                 <article>
-                    <p class="ticket-id">Ticket id : {{ ticketInfo.id }}</p>
-                    <p class="issue-date">Issue date : {{ ticketInfo.date }}</p>
+                    <p class="ticket-id">Ticket id : {{ ticketInfo.ticketId }}</p>
+                    <p class="issue-date">Issue date : {{ ticketInfo.dateOfBooking }}</p>
                 </article>
             </div>
 
             <div class="row-2 rows">
-                <div class="column-1">
+                <!-- <div class="column-1">
                     <p>Departure : {{ ticketInfo.train.from }} {{ ticketInfo.train.departure }}-ზე</p>
                 </div>
                 <div class="column-2">
                     <p>Arrival : {{ ticketInfo.train.to }} {{ ticketInfo.train.arrive }}-ზე</p>
+                </div> -->
+                <div class="column-1">
+                  <p>Ticket number : {{ticketInfo.ticketNumber}}</p>
                 </div>
-                <div class="column-3">
-                    <p>Departure date : {{ ticketInfo.date }}</p>
-                </div>
+                <!-- <div class="column-3">
+                    <p>Departure date : {{ ticketInfo.dateOfBooking }}</p>
+                </div> -->
             </div>
 
             <div class="row-3 rows">
                 <h4>Contact info</h4>
                 <article>
-                    <p class="email">Email : {{ ticketInfo.email }}</p>
-                    <p class="phone-number">Phone number : {{ ticketInfo.phone }}</p>
+                    <p class="email">Email : {{ userInfo.email }}</p>
+                    <p class="phone-number">Phone number : {{ userInfo.phoneNumber }}</p>
                 </article>
             </div>
 
             <div class="row-4 rows">
                 <h4>Passengers</h4>
                 <article>
-                    <div class="passenger" *ngFor="let person of ticketInfo.persons">
+                    <div class="passenger">
                         <div class="column-1">
-                            <p class="passenger-name">Name : {{ person.name }}</p>
+                            <p class="passenger-name">Name : {{ userInfo.name }}</p>
                         </div>
 
                         <div class="column-2">
-                            <p class="passenger-last-name">Surname : {{ person.surname }}</p>
+                            <p class="passenger-last-name">Surname : {{ userInfo.lastName }}</p>
                         </div>
 
                         <div class="column-3">
-                            <p class="passenger-private-id">Id number : {{ person.id }}</p>
+                            <p class="passenger-private-id">Payment status : {{ ticketInfo.ticketPaymentStatusId | paymentStatus }}</p>
                         </div>
 
                         <div class="column-4">
-                            <p class="passenger-private-id">Set number : {{ person.seat.number }}</p>
+                            <p class="passenger-private-id">Seat number : {{ seatInfo.seatNumber }}</p>
                         </div>
                     </div>
                 </article>
             </div>
 
             <div class="row-5 rows">
-                <h2>Total price : {{ totalPrice() }}₾</h2>
+                <h2>Total price : {{ticketInfo.ticketPrice}}₾</h2>
             </div>
 
             <div class="row-6 rows">

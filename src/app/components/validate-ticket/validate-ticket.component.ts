@@ -1,34 +1,62 @@
 import { CommonModule } from '@angular/common';
 import { SwaggerApiService } from './../../services/swagger-api.service';
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { TicketService } from '../../services/AppServices/ticket.service';
+import { UserService } from '../../services/AppServices/user.service';
+import { SeatService } from '../../services/AppServices/seat.service';
+import { PaymentStatusPipe } from "../../pipes/payment-status.pipe";
 
 
 @Component({
   selector: 'app-validate-ticket',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, PaymentStatusPipe],
   templateUrl: './validate-ticket.component.html',
   styleUrl: './validate-ticket.component.sass'
 })
-export class ValidateTicketComponent {
-  private swaggerApiService: SwaggerApiService = inject(SwaggerApiService);
+export class ValidateTicketComponent  {
+
+  private readonly ticketService: TicketService = inject(TicketService);
+  private readonly userService: UserService = inject(UserService);
+  private readonly seatService: SeatService = inject(SeatService);
 
   @ViewChild('pdfContent', { static: false }) pdfContent!: ElementRef;
 
-  ticketId: string = '';
+  ticketNumber: string = '';
 
   ticketInfo: any;
 
+  userInfo: any;
+
+  seatInfo:  any;
+
   validateTicket(): void {
     this.ticketInfo = [];
-    this.swaggerApiService.checkTicketStatus(this.ticketId).subscribe(
-      (response) => {
-        this.ticketInfo = response;
-        console.log(this.ticketInfo);
+
+    this.ticketService.GetTicket(this.ticketNumber).subscribe({
+      next: (ticketResponse) => {
+        if (ticketResponse.isSuccess) {
+          this.ticketInfo = ticketResponse.data;
+          console.log(this.ticketInfo);
+
+          this.userService.GetUser(this.ticketInfo.userId).subscribe({
+            next: (userResponse) => {
+              this.userInfo = userResponse.data;
+              console.log(this.userInfo);
+
+              this.seatService.GetSeat(this.ticketInfo.seatId).subscribe({
+                next: (seatResponse) => {
+                  this.seatInfo = seatResponse.data;
+                  console.log(this.seatInfo);
+                }
+              })
+            }
+          });
+        }
       }
-    )
+    })
   }
 
   totalPrice(): number {
