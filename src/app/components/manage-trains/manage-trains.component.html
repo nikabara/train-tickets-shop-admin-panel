@@ -4,5 +4,44 @@
       <h1>Manage trains</h1>
       <a [routerLink]="['/user/add-user']"><i class="bi bi-plus-circle"></i></a>
     </div>
+
+    <div class="train-managing-utilities">
+
+      <form class="train-search-wrapper" (ngSubmit)="searchTrains()" [formGroup]="filterForm">
+        <input formControlName="TrainId"  class="search-train-input mid lb" type="number" placeholder="Train id...">
+        <input formControlName="TrainNumber"  class="search-train-input mid bl" type="number" placeholder="Train number...">
+        <input formControlName="TrainName"  class="search-train-input mid bl" type="text" placeholder="Train name...">
+
+
+        <button class="search-train-button" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+
+
+      <div class="table-scroll-container">
+        <table class="train-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Train Id</th>
+              <th>Train number</th>
+              <th>Train name</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-tr" *ngFor="let train of filteredTrains">
+              <td>{{train.trainId}}</td>
+              <td>{{train.trainNumber}}</td>
+              <td>{{train.trainName}}</td>
+              <td class="utilities-td">
+                <button (click)="removeTrain(train.trainId!)" class="delete-train-button">Delete</button>
+                <a [routerLink]="['/train/edit-train', train.trainId]" class="user-train-button">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </section>

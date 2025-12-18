@@ -55,7 +55,7 @@
               <td>{{user.email}}</td>
               <td>{{user.phoneNumber}}</td>
               <td class="utilities-td">
-                <button (click)="removeUser(user.userId)" class="delete-user-button">Delete</button>
+                <button (click)="removeUser(user.userId!)" class="delete-user-button">Delete</button>
                 <a [routerLink]="['/user/user-details', user.userId]" class="user-details-button">Details</a>
               </td>
             </tr>

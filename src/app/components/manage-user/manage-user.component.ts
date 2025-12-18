@@ -1,3 +1,4 @@
+import { UserService } from './../../services/AppServices/user.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,6 +7,7 @@ import { ChangeEventArgs, DatePickerModule } from "@syncfusion/ej2-angular-calen
 import { UserFilterService } from '../../services/AppServices/user-filter.service';
 import { UserFilter } from '../../interfaces/UserFilter.interface';
 import { RoleIdToRoleNamePipe } from "../../pipes/role-id-to-role-name.pipe";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-manage-user',
@@ -16,6 +18,7 @@ import { RoleIdToRoleNamePipe } from "../../pipes/role-id-to-role-name.pipe";
 export class ManageUserComponent {
 
   private readonly userFilterService: UserFilterService = inject(UserFilterService);
+  private readonly userService: UserService = inject(UserService);
 
   public departureDate: Date | null | undefined = null;
   public arrivalDate: Date | null | undefined = null;
@@ -69,7 +72,33 @@ export class ManageUserComponent {
     }
   }
 
-  removeUser(userId: number | null) {
-
+  removeUser(userId: number) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#28A745",
+      cancelButtonColor: "#DC3545",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // actual deletion
+        this.filteredUsers = [];
+        this.userService.DeleteUser(userId).subscribe({
+          next: (response) => {
+            if (response.data) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "User has been deleted.",
+                icon: "success"
+              });
+            }
+          }
+        });
+      }
+    });
   }
 }
