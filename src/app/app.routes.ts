@@ -51,6 +51,13 @@ export const routes: Routes = [
         .then((m) => m.UserDetailsComponent)
     },
     {
+      path: 'user/add-user',
+      title: 'Add user',
+      canActivate: [AccessGuard],
+      loadComponent: () => import('./components/add-user/add-user.component')
+        .then((m) => m.AddUserComponent)
+    },
+    {
       path: 'train/manage-trains',
       title: 'Manage trains',
       canActivate: [AccessGuard],

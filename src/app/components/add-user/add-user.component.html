@@ -1,0 +1,33 @@
+<section class="general-wrapper">
+  <div class="general">
+    <h1>Add user</h1>
+    <form class="user-details-inner" (ngSubmit)="addUser()" [formGroup]="addForm">
+      <label class="input-labels" style="display: grid; row-gap: 5px;">
+        <span *ngIf="addForm.controls['name'].invalid && addForm.controls['name'].touched"><i class="bi bi-dot"></i> <span style="color: #d17373;">Name is invalid</span></span>
+        <input class="user-name details-paragraph" placeholder="Name" formControlName="name">
+      </label>
+
+      <label class="input-labels" style="display: grid; row-gap: 5px;">
+        <span *ngIf="addForm.controls['lastName'].invalid && addForm.controls['lastName'].touched"><i class="bi bi-dot"></i> <span style="color: #d17373;">LastName is invalid</span></span>
+        <input class="user-lastName details-paragraph" placeholder="lastName" formControlName="lastName">
+      </label>
+
+      <input class="user-age details-paragraph" placeholder="Age" formControlName="age">
+
+      <label class="input-labels" style="display: grid; row-gap: 5px;">
+        <span *ngIf="addForm.controls['email'].invalid && addForm.controls['email'].touched"><i class="bi bi-dot"></i> <span style="color: #d17373;">Email is invalid</span></span>
+        <input class="user-email details-paragraph" placeholder="Email" formControlName="email">
+      </label>
+
+      <input class="user-phoneNumber details-paragraph" placeholder="Phone number" formControlName="phoneNumber">
+
+      <label class="input-labels" style="display: grid; row-gap: 5px;">
+        <span *ngIf="addForm.controls['password'].invalid && addForm.controls['password'].touched"><i class="bi bi-dot"></i> <span style="color: #d17373;">Password is invalid</span></span>
+        <input class="user-password details-paragraph" placeholder="Password" formControlName="password">
+      </label>
+
+      <button type="submit">Add user</button>
+    </form>
+
+  </div>
+</section>

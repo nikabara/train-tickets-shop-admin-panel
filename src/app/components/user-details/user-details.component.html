@@ -1,10 +1,16 @@
 <section class="user-details-wrapper">
   <div class="user-details">
-    <h1>User details</h1>
+    <div class="top-util">
+      <h1>User details</h1>
+      <div style="display: flex; gap: 5px;">
+        <button (click)="makeUserAdmin()">Make Admin</button>
+        <button (click)="verifyUser()" style="background-color: green;">Verify</button>
+      </div>
+    </div>
 
     <div class="user-details-inner">
       <p class="user-id details-paragraph">User Id : {{user.userId}}</p>
-      <p class="user-userRoleId details-paragraph">Role Id : {{user.userRoleId}}</p>
+      <p class="user-userRoleId details-paragraph">Role : {{user.userRoleId | roleIdToRoleName}}</p>
       <p class="user-name details-paragraph">Name : {{user.name}}</p>
       <p class="user-lastname details-paragraph">LastName : {{user.lastName}}</p>
       <p class="user-age details-paragraph">Age : {{user.age}}</p>

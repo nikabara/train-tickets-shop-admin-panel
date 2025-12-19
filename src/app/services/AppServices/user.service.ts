@@ -28,4 +28,11 @@ export class UserService {
     return this.http.delete<ServiceResponse<boolean>>(`${this.url}/User/admin/delete-user/${userId}`, {headers: headers});
   }
 
+  UpdateUser(updateUserModel: any): Observable<ServiceResponse<boolean>> {
+    const jwtAccessToken = localStorage.getItem('jwt_access_token');
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${jwtAccessToken}`);
+
+    return this.http.put<ServiceResponse<boolean>>(`${this.url}/User/admin/update-user`, updateUserModel, {headers: headers});
+  }
 }

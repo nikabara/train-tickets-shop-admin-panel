@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ServiceResponse } from '../../interfaces/common/ServiceResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,6 @@ export class AuthService {
     let params = new HttpParams().set("email", email).set("password", password);
 
     return this.http.post(`${this.apiURL}/Auth/log-in`, null, {params: params});
-
   }
 
   SendVerificationCode(userId: number): Observable<any> {
@@ -36,5 +36,9 @@ export class AuthService {
 
   IsUserVerified(userId: number): Observable<any> {
     return this.http.post(`${this.apiURL}/Auth/is-user-verified/${userId}`, null);
+  }
+
+  RegisterUser(addUserModel: any): Observable<ServiceResponse<number>> {
+    return this.http.post<ServiceResponse<number>>(`${this.apiURL}/Auth/register`, addUserModel);
   }
 }
