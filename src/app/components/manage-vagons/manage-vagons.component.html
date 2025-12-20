@@ -1,0 +1,47 @@
+<section class="general-wrapper">
+  <div class="general">
+    <div class="top-util">
+      <h1>Manage vagons</h1>
+      <a [routerLink]="['/vagon/add-vagon']"><i class="bi bi-plus-circle"></i></a>
+    </div>
+
+    <div class="vagon-managing-utilities">
+      <form class="vagon-search-wrapper" (ngSubmit)="searchVagons()" [formGroup]="filterForm">
+        <input formControlName="vagonId"  class="search-vagon-input mid lb" type="number" placeholder="Vagon Id...">
+        <input formControlName="trainId"  class="search-vagon-input bl" type="number" placeholder="Train Id...">
+        <input formControlName="vagonType"  class="search-vagon-input bl" type="text" placeholder="Vagon type...">
+        <input formControlName="capacity"  class="search-vagon-input bl" type="text" placeholder="Vagon capacity...">
+
+        <button class="search-vagon-button" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+
+      <div class="table-scroll-container">
+        <table class="vagon-data-table">
+          <thead>
+            <tr class="sticky-header-row">
+              <th>Vagon Id</th>
+              <th>Train Id</th>
+              <th>Vagon Type</th>
+              <th>Vagon Capacity</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-tr" *ngFor="let vagon of filteredVagons">
+              <td>{{vagon.vagonId}}</td>
+              <td>{{vagon.trainId}}</td>
+              <td>{{vagon.vagonType | vagonType }}</td>
+              <td>{{vagon.capacity}}</td>
+              <td class="utilities-td">
+                <button (click)="removeVagon(vagon.vagonId)" class="delete-vagon-button">Delete</button>
+                <a [routerLink]="['/vagon/edit-vagon', vagon.vagonId]" class="vagon-details-button">Details</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
