@@ -93,11 +93,11 @@ export const routes: Routes = [
         .then((m) => m.AddVagonComponent)
     },
     {
-      path: 'vagon/edit-vagon/:id',
-      title: 'Edit vagon',
+      path: 'vagon/vagon-details/:id',
+      title: 'Vagon details',
       canActivate: [AccessGuard],
-      loadComponent: () => import('./components/edit-vagon/edit-vagon.component')
-        .then((m) => m.EditVagonComponent)
+      loadComponent: () => import('./components/vagon-details/vagon-details.component')
+        .then((m) => m.VagonDetailsComponent)
     },
     { path: 'compose', component: ComposeComponent, title: 'Compose', canActivate: [AccessGuard] },
     { path: 'validate-ticket', component: ValidateTicketComponent, title: 'Validate Ticket', canActivate: [AccessGuard] },

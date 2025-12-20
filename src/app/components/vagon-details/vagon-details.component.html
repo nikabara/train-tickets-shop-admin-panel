@@ -1,0 +1,34 @@
+<section class="general-wrapper">
+  <div class="general">
+    <h1>Vagon details</h1>
+
+    <div class="user-details-inner">
+      <p class="details-paragraph">Vagon Id : {{vagon.vagonId}}</p>
+      <p class="details-paragraph">Train Id : {{vagon.trainId}}</p>
+      <p class="details-paragraph">Vagon type : {{vagon.vagonType | vagonType }}</p>
+      <p class="details-paragraph">Vagon capacity : {{vagon.capacity}}</p>
+    </div>
+
+    <h1>Seats</h1>
+    <div class="table-scroll-container">
+      <table class="vagon-data-table">
+        <thead>
+          <tr class="sticky-header-row">
+            <th>Seat Id</th>
+            <th>Seat number</th>
+            <th>Seat price</th>
+            <th>Seat status Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="data-tr" *ngFor="let seat of vagon.seats">
+            <td>{{seat.seatId}}</td>
+            <td>{{seat.seatNumber}}</td>
+            <td>{{seat.seatPrice}}</td>
+            <td>{{seat.seatStatusId}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

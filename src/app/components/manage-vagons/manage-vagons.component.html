@@ -2,7 +2,6 @@
   <div class="general">
     <div class="top-util">
       <h1>Manage vagons</h1>
-      <a [routerLink]="['/vagon/add-vagon']"><i class="bi bi-plus-circle"></i></a>
     </div>
 
     <div class="vagon-managing-utilities">
@@ -36,7 +35,7 @@
               <td>{{vagon.capacity}}</td>
               <td class="utilities-td">
                 <button (click)="removeVagon(vagon.vagonId)" class="delete-vagon-button">Delete</button>
-                <a [routerLink]="['/vagon/edit-vagon', vagon.vagonId]" class="vagon-details-button">Details</a>
+                <a [routerLink]="['/vagon/vagon-details', vagon.vagonId]" class="vagon-details-button">Details</a>
               </td>
             </tr>
           </tbody>

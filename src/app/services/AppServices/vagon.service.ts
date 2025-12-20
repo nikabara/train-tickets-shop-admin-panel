@@ -15,4 +15,8 @@ export class VagonService {
   RemoveVagon(vagonId: number): Observable<ServiceResponse<boolean>> {
     return this.http.delete<ServiceResponse<boolean>>(`${this.url}/Vagon/delete-vagon/${vagonId}`);
   }
+
+  GetVagon(vagonId: number): Observable<ServiceResponse<any>> {
+    return this.http.get<ServiceResponse<any>>(`${this.url}/Vagon/get-vagon/${vagonId}`);
+  }
 }
