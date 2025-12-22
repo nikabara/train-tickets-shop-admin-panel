@@ -1,5 +1,37 @@
-<section class="general-wrapper">
-  <div class="general">
-    <h1>Add vagon</h1>
+<section class="add-train-wrapper">
+  <div class="add-train">
+    <h1>Add Vagons</h1>
+
+    <form (ngSubmit)="submitVagons()" [formGroup]="addForm">
+
+      <div class="action-buttons">
+        <button type="button" (click)="addNewVagon()" class="btn-add">
+          + Add New Vagon
+        </button>
+
+        <button type="submit" [disabled]="vagonControls.length === 0">
+          Submit All Vagons
+        </button>
+      </div>
+
+      <div formArrayName="vagons">
+        <div *ngFor="let vagon of vagonControls; let i = index" [formGroupName]="i" class="vagon-entry">
+          <hr *ngIf="i > 0">
+          <h3>Vagon #{{i + 1}}</h3>
+
+          <label>Train ID</label>
+          <input formControlName="trainId" type="number" placeholder="Enter Train ID">
+
+          <label>Capacity</label>
+          <input formControlName="capacity" type="number" placeholder="Enter Capacity">
+
+          <label>Vagon Type</label>
+          <input formControlName="vagonType" type="number" placeholder="Enter Type (0, 1, 2...)">
+
+          <button type="button" class="btn-remove" (click)="removeVagon(i)">Remove this vagon</button>
+        </div>
+      </div>
+
+    </form>
   </div>
 </section>

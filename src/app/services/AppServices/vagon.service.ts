@@ -19,4 +19,8 @@ export class VagonService {
   GetVagon(vagonId: number): Observable<ServiceResponse<any>> {
     return this.http.get<ServiceResponse<any>>(`${this.url}/Vagon/get-vagon/${vagonId}`);
   }
+
+  AddVagon(addVagonModel: any): Observable<ServiceResponse<number>> {
+    return this.http.post<ServiceResponse<number>>(`${this.url}/Vagon/add-vagon`, addVagonModel);
+  }
 }

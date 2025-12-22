@@ -1,0 +1,75 @@
+.add-train-wrapper
+  // Assuming existing wrapper styles
+
+.add-train
+  form
+    width: 100%
+    display: flex
+    flex-direction: column
+    gap: 15px
+
+    .vagon-entry
+      display: flex
+      flex-direction: column
+      background: rgba(111, 106, 248, 0.1)
+      padding: 15px
+      border-radius: 8px
+      margin-bottom: 20px
+
+    h3
+      color: #6f6af8
+      margin-bottom: 5px
+
+    label
+      margin-top: 10px
+      font-weight: bold
+
+    input
+      width: 100%
+      height: 50px
+      font-size: 18px
+      background-color: #6f6af8
+      border: none
+      outline: none
+      color: white
+      padding: 15px
+      border-radius: 4px
+      &::placeholder
+        color: #ffffffcd
+
+    button
+      border: none
+      background-color: #6f6af8
+      color: white
+      border-radius: 4px
+      font-size: 18px
+      height: 50px
+      margin-top: 15px
+      cursor: pointer
+      transition: background 0.3s
+
+      &:hover
+        background-color: #625df9
+
+      &:disabled
+        background-color: #cccccc
+        cursor: not-allowed
+
+    .btn-remove
+      background-color: #EE4B2B
+      font-size: 14px
+      height: 35px
+      margin-top: 10px
+      &:hover
+        background-color: #d43d1f
+
+    .btn-add
+      background-color: #28a745
+      margin-bottom: 10px
+      &:hover
+        background-color: #218838
+
+.action-buttons
+  display: grid
+  grid-template-columns: 1fr 1fr
+  column-gap: 10px
