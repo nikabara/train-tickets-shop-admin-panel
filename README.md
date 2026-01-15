@@ -1,59 +1,135 @@
-# TrainTicketsShopAdminPanel
+# RailwayTicketsAdmin Documentation
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
+This documentation provides a comprehensive overview of the **RailwayTicketsAdmin** project. It is the frontend administration dashboard designed to work in tandem with the [RailwayTicketsAPI](https://github.com/nikabara/RailwayTicketsAPI).
 
-## Development server
+A modern, responsive Administrative Panel built with **Angular 19** for managing the Railway Ticket system. This dashboard allows administrators to manage train schedules, monitor ticket sales, and oversee system data.
 
-To start a local development server, run:
+## 🚀 Overview
 
+**RailwayTicketsAdmin** provides a user-friendly interface for the backend Railway system. It is designed to handle administrative tasks such as adding new trains, defining routes, and managing user roles through a secure, Single Page Application (SPA) architecture.
+
+### Technical Stack
+
+* **Framework:** Angular 19
+* **Language:** TypeScript
+* **Styling:** SASS / Tailwind CSS (or Angular Material) / Bootstrap / Syncfusion
+* **State Management:** RxJS
+* **Communication:** HttpClient (REST API)
+
+---
+
+## 📂 Project Structure
+
+The project follows the standard Angular modular structure with a focus on feature-based organization:
+
+```text
+train-tickets-shop-admin-panel/
+├── src/
+│   ├── app/
+│   │   ├── components/      # Reusable UI components (Sidebar, Navbar, Cards)
+│   │   ├── pages/           # Main views (Dashboard, Trains, Tickets, Login)
+│   │   ├── services/        # API communication logic
+│   │   ├── models/          # TypeScript interfaces/classes
+│   │   ├── guards/          # Auth guards for route protection
+│   │   └── app.routes.ts    # Frontend routing configuration
+│   ├── assets/              # Images, icons, and static files
+│   └── environments/        # API endpoint configurations (Prod/Dev)
+├── package.json             # Dependencies and scripts
+└── angular.json             # Angular CLI configuration
+
+```
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+* [Node.js](https://nodejs.org/) (LTS Version recommended)
+* [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
+* A running instance of the [RailwayTicketsAPI](https://github.com/nikabara/RailwayTicketsAPI)
+
+### Installation
+
+1. **Clone the repository (Specific Branch):**
+To ensure you have the correct version, clone the `FInalProjectVersion` branch specifically:
+```bash
+git clone -b FInalProjectVersion https://github.com/nikabara/train-tickets-shop-admin-panel.git
+cd train-tickets-shop-admin-panel
+
+```
+
+
+2. **Install Dependencies:**
+```bash
+npm install
+
+```
+
+
+3. **Configure Environment:**
+Open `src/environments/environment.ts` and ensure the `apiUrl` points to your running .NET API:
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:5001/api'
+};
+
+```
+
+
+4. **Run the Application:**
 ```bash
 ng serve
+
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+The admin panel will be accessible at `http://localhost:4200`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
+
+## 🖥️ Features & Functionality
+
+### 📊 Dashboard
+
+* Overview of total tickets sold and active train schedules.
+* Visual representation of system statistics.
+
+### 🚂 Train Management
+
+* **Add/Edit Trains:** Define train types, capacity, and seat layouts.
+* **Route Planning:** Assign trains to specific stations and set departure/arrival times.
+
+### 🎫 Ticket Oversight
+
+* View all booked tickets across the system.
+* Ability to manually cancel or modify reservations if required.
+
+### 🔐 Admin Authentication
+
+* Secure login portal for authorized staff only.
+* JWT storage and automatic attachment to API requests via HTTP Interceptors.
+
+---
+
+## 🔧 Build & Deployment
+
+To build the project for a production environment:
 
 ```bash
-ng generate component component-name
+ng build --configuration production
+
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The compiled files will be located in the `dist/` folder, ready to be hosted on any static web server (Nginx, Firebase, Azure Static Web Apps, etc.).
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## 📝 License
 
-To build the project run:
+This project is part of the Railway Ticket System suite and is licensed under the MIT License.
 
-```bash
-ng build
-```
+## 👥 Contributors
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* **Nika Baratashvili** ([@nikabara](https://github.com/nikabara)) - Frontend Architecture & UI/UX
